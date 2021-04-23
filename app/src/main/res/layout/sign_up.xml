@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/background">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="270dp"
+        tools:layout_editor_absoluteY="112dp"
+        android:layout_marginLeft="16sp"
+        android:layout_marginRight="16sp">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10sp"
+            android:layout_marginBottom="10sp"
+            android:fontFamily="@font/montserrat_medium"
+            android:gravity="center"
+            android:text="YUliCar"
+            android:textScaleX="0.95"
+            android:textColor="@color/big_text"
+            android:textSize="32sp" />
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="138dp"
+            android:layout_marginTop="1sp"
+            app:srcCompat="@drawable/logo_main"
+            android:adjustViewBounds="true"/>
+
+        <TextView
+            android:id="@+id/text_input_numb"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Введите мобильный номер"
+            android:textScaleX="0.95"
+            android:layout_marginBottom="10sp"
+            android:textSize="@dimen/main_text_size"
+            android:fontFamily="@font/montserrat_medium"/>
+
+        <EditText
+            android:id="@+id/etPhone"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/but_height"
+            android:layout_gravity="center"
+            android:cursorVisible="false"
+            android:ems="10"
+            android:fontFamily="@font/montserrat_medium"
+            android:inputType="phone"
+            android:textColor="@color/dark_text"
+            android:textScaleX="0.95"
+            android:textSize="@dimen/but_text_size"
+            app:cornerRadius="@dimen/corner_radius"
+            app:strokeColor="@color/dark_text"
+            android:background="@drawable/fields"
+            android:layout_marginBottom="15sp"/>
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Введите своё имя"
+            android:textScaleX="0.95"
+            android:layout_marginBottom="10sp"
+            android:textSize="@dimen/main_text_size"
+            android:fontFamily="@font/montserrat_medium"/>
+
+        <EditText
+            android:id="@+id/etName"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/but_height"
+            android:layout_gravity="center"
+            android:cursorVisible="false"
+            android:ems="10"
+            android:fontFamily="@font/montserrat_medium"
+            android:inputType="phone"
+            android:textScaleX="0.95"
+            android:textColor="@color/dark_text"
+            android:textSize="@dimen/but_text_size"
+            app:cornerRadius="@dimen/corner_radius"
+            app:strokeColor="@color/dark_text"
+            android:background="@drawable/fields"
+            android:layout_marginBottom="27sp"/>
+
+        <Button
+            android:id="@+id/sing_up"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/but_height"
+            android:layout_gravity="center"
+            android:layout_marginBottom="27sp"
+            android:background="@drawable/shape_dark_button"
+            android:fontFamily="@font/montserrat_medium"
+            android:onClick="signUp"
+            android:text="Создать аккаунт"
+            android:textAllCaps="false"
+            android:textColor="@color/light_text"
+            android:textScaleX="0.95"
+            android:textSize="@dimen/but_text_size"
+            app:backgroundTint="@color/buttons"
+            app:cornerRadius="@dimen/corner_radius"
+            app:strokeColor="@color/dark_text"
+            app:strokeWidth="@dimen/stroke_width" />
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

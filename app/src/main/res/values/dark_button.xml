@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="DarkButton">
+        <item name="colorButtonNormal">@color/buttons</item>
+        <item name="colorControlNormal">@color/big_text</item>
+    </style>
+</resources>
