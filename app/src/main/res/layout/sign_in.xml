@@ -31,26 +31,50 @@
             android:textSize="@dimen/main_text_size"
             android:fontFamily="@font/montserrat_medium"/>
 
-        <EditText
+
+        <!--<EditText
             android:id="@+id/etPhoneIn"
             android:layout_width="match_parent"
             android:layout_height="@dimen/but_height"
-            android:layout_marginBottom="27sp"
-
             android:layout_gravity="center"
+
+            android:layout_marginBottom="27sp"
+            android:background="@drawable/fields"
             android:cursorVisible="false"
             android:ems="10"
             android:fontFamily="@font/montserrat_medium"
+            android:hint="+375 33 627 66 33"
             android:inputType="phone"
+            android:padding="10sp"
+
             android:textColor="@color/dark_text"
-            android:textSize="@dimen/but_text_size"
             android:textScaleX="0.95"
 
+            android:textSize="@dimen/but_text_size"
             app:cornerRadius="@dimen/corner_radius"
-            app:strokeColor="@color/dark_text"
+            app:strokeColor="@color/dark_text" />-->
 
+        <com.santalu.maskara.widget.MaskEditText
+            android:id="@+id/etPhone"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/but_height"
+            android:layout_gravity="center"
+            android:layout_marginBottom="15sp"
             android:background="@drawable/fields"
-            />
+            android:cursorVisible="false"
+            android:ems="10"
+            android:fontFamily="@font/montserrat_medium"
+            android:hint="+375 33 627 66 33"
+            android:inputType="phone"
+            android:padding="10sp"
+            android:textColor="@color/dark_text"
+            android:textScaleX="0.95"
+            android:textSize="@dimen/but_text_size"
+            app:mask="+375 (__) ___ __ __"
+            app:maskCharacter="_"
+            app:maskStyle="completable"
+            app:cornerRadius="@dimen/corner_radius"
+            app:strokeColor="@color/dark_text"/>
 
         <Button
             android:id="@+id/sing_in"

@@ -11,6 +11,6 @@ public class MyConstants {
     public static final String SQL_CREATE_ENTRIES = "CREATE TABLE IF NOT EXISTS " + TABLE_NAME + " (" + _ID +
             " INTEGER PRIMARY KEY, " + NUMBER + " TEXT, "+ USER_NAME+ " TEXT)";
 
-    public static final String SQL_DELETE_ENTRIES = "DROP TABLE IF EXISTS "+TABLE_NAME;
+    public static final String SQL_DELETE_ENTRIES = "DROP TABLE IF EXISTS " + TABLE_NAME;
 
 }

@@ -38,6 +38,8 @@ public class MyDBManager {
             tempList.add (number);
         }
         cursor.close ();
+        //Это Юля удаляла тестинговые записи из таблицы
+        //db.delete(MyConstants.TABLE_NAME, null, null);
         return tempList;
     }
 

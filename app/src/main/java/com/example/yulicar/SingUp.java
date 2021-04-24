@@ -39,6 +39,7 @@ public class SingUp extends Activity {
     }
 
     public void signUp (View view) {
+
         myDBManager.insertToDB (phNumber.getText ().toString (), name.getText ().toString ());
     }
 
