@@ -63,7 +63,7 @@
             android:textSize="@dimen/but_text_size"
             app:mask="+375 (__) ___ __ __"
             app:maskCharacter="_"
-            app:maskStyle="completable"
+            app:maskStyle="persistent"
             app:cornerRadius="@dimen/corner_radius"
             app:strokeColor="@color/dark_text"/>
         <!--<EditText

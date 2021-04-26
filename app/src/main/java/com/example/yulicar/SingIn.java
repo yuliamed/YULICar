@@ -9,10 +9,11 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 
 import com.example.yulicar.db.MyDBManager;
+import com.santalu.maskara.widget.MaskEditText;
 
 public class SingIn extends Activity {
     private MyDBManager myDBManager;
-    private EditText phNumber;
+    private MaskEditText phNumber;
     private TextView test;
     @Override
     protected void onCreate (@Nullable Bundle savedInstanceState) {

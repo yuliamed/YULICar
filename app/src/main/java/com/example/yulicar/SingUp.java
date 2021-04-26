@@ -8,10 +8,11 @@ import android.widget.EditText;
 import androidx.annotation.Nullable;
 
 import com.example.yulicar.db.MyDBManager;
+import com.santalu.maskara.widget.MaskEditText;
 
 public class SingUp extends Activity {
     private MyDBManager myDBManager;
-    private EditText phNumber;
+    private MaskEditText phNumber;
     private EditText name;
     @Override
     protected void onCreate (@Nullable Bundle savedInstanceState) {
@@ -40,7 +41,7 @@ public class SingUp extends Activity {
 
     public void signUp (View view) {
 
-        myDBManager.insertToDB (phNumber.getText ().toString (), name.getText ().toString ());
+        myDBManager.insertToDB (phNumber.getUnMasked (), name.getText ().toString ());
     }
 
     @Override

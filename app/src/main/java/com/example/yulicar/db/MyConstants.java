@@ -5,7 +5,7 @@ public class MyConstants {
     public static final String _ID = "_id";
     public static final String NUMBER = "number";
     public static final String USER_NAME = "user_name";
-    public static final String DB_NAME = "my_db.db";
+    public static final String DB_NAME = "my_db1.db";
     public static final int DB_VERSION = 1;
 
     public static final String SQL_CREATE_ENTRIES = "CREATE TABLE IF NOT EXISTS " + TABLE_NAME + " (" + _ID +
