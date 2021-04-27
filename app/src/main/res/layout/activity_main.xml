@@ -92,5 +92,12 @@
             android:background="@drawable/fields"
             android:onClick="click"/>
 
+        <Button
+            android:id="@+id/bTest"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="TEST"
+            android:onClick="click"/>
+
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

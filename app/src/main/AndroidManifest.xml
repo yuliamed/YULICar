@@ -18,6 +18,7 @@
         </activity>
         <activity android:name=".SingIn"/>
         <activity android:name=".SingUp"/>
+        <activity android:name=".Menu"/>
     </application>
 
 </manifest>

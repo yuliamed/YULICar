@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/user_navigation"
+    app:startDestination="@id/userFragment">
+
+    <fragment
+        android:id="@+id/userFragment"
+        android:name="com.example.yulicar.UserFragment"
+        android:label="fragment_user"
+        tools:layout="@layout/fragment_account" />
+    <fragment
+        android:id="@+id/helpFragment"
+        android:name="com.example.yulicar.HelpFragment"
+        android:label="fragment_help"
+        tools:layout="@layout/fragment_help" />
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="com.example.yulicar.CentralFragment"
+        android:label="fragment_central"
+        tools:layout="@layout/fragment_search" />
+</navigation>

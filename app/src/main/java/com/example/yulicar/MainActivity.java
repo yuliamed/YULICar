@@ -11,6 +11,7 @@ public class MainActivity extends AppCompatActivity {
 
     private Button bSignIn;
     private Button bSignUp;
+    private Button bMenuTest;
     @Override
     protected void onCreate (Bundle savedInstanceState) {
 
@@ -19,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
 
         bSignIn = (Button)findViewById (R.id.first_sing_in);
         bSignUp = (Button) findViewById (R.id.first_sing_up);
+        bMenuTest=(Button) findViewById (R.id.bTest);
     }
 
     public void click (View v) {
@@ -28,6 +30,9 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.first_sing_up:
                 startActivity (new Intent (MainActivity.this, SingUp.class));
+                break;
+            case R.id.bTest:
+                startActivity (new Intent (MainActivity.this, Menu.class));
                 break;
         }
     }
