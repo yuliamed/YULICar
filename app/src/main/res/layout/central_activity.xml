@@ -41,14 +41,21 @@
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/navigation_view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="56dp"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="16dp"
-        android:background="@color/background"
+        android:layout_marginBottom="0dp"
+        android:background="@drawable/fields"
+        app:menu="@menu/bottom_menu"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:itemTextColor="@color/dark_text"
+        app:itemIconTint="@color/buttons"
+        app:itemRippleColor="@color/big_text"
+        app:itemIconSize="27dp"
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="30dp"
-        app:menu="@menu/bottom_menu"/>
+
+
+        />
 
     <!--<fragment
         android:id="@+id/fragment"
