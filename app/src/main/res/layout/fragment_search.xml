@@ -1,17 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CentralFragment">
+    tools:context=".CentralFragment"
+    android:orientation="vertical"
+    android:layout_marginLeft="16sp"
+    android:layout_marginRight="16sp">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/central_fragment"
-        android:textSize="26sp"
+        android:text="YULICar"
+        android:fontFamily="@font/montserrat_medium"
+        android:textColor="@color/big_text"
+        android:layout_gravity="center"
+        android:textSize="36sp"
+        android:layout_marginTop="20sp"
         android:layout_centerInParent="true"/>
 
-</RelativeLayout>
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="138dp"
+        android:layout_marginTop="20sp"
+        app:srcCompat="@drawable/logo_main" />
+
+
+
+    <Button
+        android:id="@+id/sing_in"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/but_height"
+        android:layout_gravity="center"
+        android:layout_marginBottom="27sp"
+        android:background="@drawable/shape_dark_button"
+        android:fontFamily="@font/montserrat_medium"
+        android:text="Войти"
+        android:textScaleX="0.95"
+        android:textAllCaps="false"
+        android:textColor="@color/light_text"
+        android:textSize="@dimen/but_text_size"
+        app:backgroundTint="@color/buttons"
+        app:cornerRadius="@dimen/corner_radius"
+        app:strokeColor="@color/dark_text"
+        app:strokeWidth="@dimen/stroke_width"
+        android:onClick="signIn"/>
+
+</LinearLayout>

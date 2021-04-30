@@ -54,7 +54,6 @@
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="30dp"
 
-
         />
 
     <!--<fragment
