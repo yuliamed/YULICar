@@ -1,12 +1,20 @@
 package com.example.yulicar;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.os.Bundle;
 
+import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.CalendarView;
+import android.widget.EditText;
+
+import com.google.android.material.snackbar.Snackbar;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -23,11 +31,6 @@ public class CentralFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-    private String [] directions = {"Minsk - Mogilev", "Mogilev - Minsk"};
-
-    public CentralFragment () {
-        // Required empty public constructor
-    }
 
     /**
      * Use this factory method to create a new instance of
@@ -59,12 +62,22 @@ public class CentralFragment extends Fragment {
     @Override
     public View onCreateView (LayoutInflater inflater, ViewGroup container,
                               Bundle savedInstanceState) {
-
-
-
+        View view = inflater.inflate (R.layout.fragment_search, null);
+        Button button = (Button) view.findViewById (R.id.ButtonCalendar);
+        button.setOnClickListener (this::onClick);
 
         // Inflate the layout for this fragment
-        return inflater.inflate (R.layout.fragment_search, container, false);
+        return view;
+    }
+
+    public void onClick (View v) {
+
+        Snackbar.make (v, "HELLO FROM BUTTON", Snackbar.LENGTH_LONG).show ();
+        /*Dialog dialog = new Dialog (getActivity ().getBaseContext ());
+        dialog.setContentView (R.layout.alert_calendar);
+
+        dialog.setCancelable (false);*/
+        //CalendarView calendarView = (CalendarView) fi
 
 
     }

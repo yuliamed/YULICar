@@ -59,7 +59,7 @@
 
         <Spinner
             android:id="@+id/spinnerCityFrom"
-            android:layout_width="179sp"
+            android:layout_width="177sp"
             android:layout_height="55sp"
             android:layout_marginEnd="21sp"
             android:layout_marginBottom="20sp"
@@ -68,7 +68,7 @@
 
         <Spinner
             android:id="@+id/spinnerCityTo"
-            android:layout_width="179dp"
+            android:layout_width="177dp"
             android:layout_height="55sp"
             android:layout_marginBottom="20sp"
             android:background="@drawable/spinner_shape"
@@ -83,10 +83,15 @@
         android:fontFamily="@font/montserrat_medium"
         android:text="Когда"
         android:textSize="@dimen/main_text_size" />
-    <EditText
+
+    <Button
+        android:id="@+id/ButtonCalendar"
         android:layout_width="match_parent"
         android:layout_height="55sp"
-        />
+        android:backgroundTint="@color/background"
+        android:shadowColor="@color/background"
+        app:iconPadding="0dp"
+        app:iconTint="@color/buttons" />
 
     <Button
         android:layout_marginTop="20sp"
