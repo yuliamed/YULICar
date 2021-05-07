@@ -1,117 +1,116 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CentralFragment"
-    android:orientation="vertical"
     android:layout_marginLeft="16sp"
-    android:layout_marginRight="16sp">
+    android:layout_marginRight="16sp"
+    android:orientation="vertical"
+    tools:context=".CentralFragment">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="YULICar"
-        android:fontFamily="@font/montserrat_medium"
-        android:textColor="@color/big_text"
+        android:layout_centerInParent="true"
         android:layout_gravity="center"
-        android:textSize="36sp"
         android:layout_marginTop="20sp"
-        android:layout_centerInParent="true"/>
+        android:layout_marginBottom="5sp"
+        android:fontFamily="@font/montserrat_medium"
+        android:text="YULICar"
+        android:textColor="@color/big_text"
+        android:textSize="36sp" />
 
-    <ImageView
-        android:id="@+id/imageView"
+    <TableLayout
         android:layout_width="match_parent"
-        android:layout_height="138dp"
-        android:layout_marginTop="20sp"
-        app:srcCompat="@drawable/logo_main" />
+        android:layout_height="wrap_content">
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        <TableRow
+            android:weightSum="2">
+            <TextView
+                android:id="@+id/textViewCityFrom"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginEnd="21sp"
+                android:layout_marginBottom="5sp"
+                android:fontFamily="@font/montserrat_medium"
+                android:text="Откуда"
+                android:layout_width="0dp"
+                android:textColor="@color/dark_text"
+                android:textSize="@dimen/main_text_size" />
 
-        <TextView
-            android:id="@+id/textViewCityFrom"
-            android:layout_width="179sp"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="21sp"
-            android:layout_marginBottom="5sp"
-            android:fontFamily="@font/montserrat_medium"
-            android:text="Откуда"
-            android:textSize="@dimen/main_text_size" />
+            <TextView
+                android:id="@+id/textViewCityTo"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_marginBottom="5sp"
+                android:fontFamily="@font/montserrat_medium"
+                android:text="Куда"
+                android:textColor="@color/dark_text"
+                android:textSize="@dimen/main_text_size" />
+        </TableRow>
 
-        <TextView
-            android:id="@+id/textViewCityTo"
-            android:layout_width="179dp"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="5sp"
-            android:fontFamily="@font/montserrat_medium"
-            android:text="Куда"
-            android:textSize="@dimen/main_text_size" />
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="55sp"
-        android:orientation="horizontal">
+        <TableRow
+            android:weightSum="2">
+            <Spinner
+                android:id="@+id/spinnerCityFrom"
+                android:layout_height="55sp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_marginEnd="21sp"
+                android:layout_marginBottom="20sp"
+                android:background="@drawable/spinner_shape"
+                android:spinnerMode="dropdown" />
 
-        <Spinner
-            android:id="@+id/spinnerCityFrom"
-            android:layout_width="177sp"
-            android:layout_height="55sp"
-            android:layout_marginEnd="21sp"
-            android:layout_marginBottom="20sp"
-            android:background="@drawable/spinner_shape"
-            android:spinnerMode="dropdown"/>
+            <Spinner
+                android:layout_weight="1"
+                android:id="@+id/spinnerCityTo"
+                android:layout_height="55sp"
+                android:layout_width="0dp"
+                android:layout_marginBottom="20sp"
+                android:background="@drawable/spinner_shape"
+                android:spinnerMode="dropdown" />
+        </TableRow>
+    </TableLayout>
 
-        <Spinner
-            android:id="@+id/spinnerCityTo"
-            android:layout_width="177dp"
-            android:layout_height="55sp"
-            android:layout_marginBottom="20sp"
-            android:background="@drawable/spinner_shape"
-            android:spinnerMode="dropdown" />
-    </LinearLayout>
 
     <TextView
         android:id="@+id/textViewWhen"
-        android:layout_width="179dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="5sp"
         android:fontFamily="@font/montserrat_medium"
         android:text="Когда"
+        android:textColor="@color/dark_text"
         android:textSize="@dimen/main_text_size" />
 
-    <Button
-        android:id="@+id/ButtonCalendar"
-        android:layout_width="match_parent"
-        android:layout_height="55sp"
-        android:backgroundTint="@color/background"
-        android:shadowColor="@color/background"
-        app:iconPadding="0dp"
-        app:iconTint="@color/buttons" />
+    <CalendarView
+        android:id="@+id/calendarView"
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_gravity="center_horizontal" />
 
     <Button
-        android:layout_marginTop="20sp"
         android:id="@+id/sing_in"
         android:layout_width="match_parent"
         android:layout_height="@dimen/but_height"
         android:layout_gravity="center"
+        android:layout_marginTop="20sp"
         android:layout_marginBottom="27sp"
         android:background="@drawable/shape_dark_button"
         android:fontFamily="@font/montserrat_medium"
-        android:text="Войти"
-        android:textScaleX="0.95"
+        android:text="Поиск"
         android:textAllCaps="false"
         android:textColor="@color/light_text"
+        android:textScaleX="0.95"
         android:textSize="@dimen/but_text_size"
         app:backgroundTint="@color/buttons"
         app:cornerRadius="@dimen/corner_radius"
         app:strokeColor="@color/dark_text"
-        app:strokeWidth="@dimen/stroke_width"/>
-        <!--TODO
-        android:onClick="signIn"-->
+        app:strokeWidth="@dimen/stroke_width" />
+    <!--TODO
+    android:onClick="signIn"-->
 
 </LinearLayout>

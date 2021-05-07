@@ -63,8 +63,8 @@ public class CentralFragment extends Fragment {
     public View onCreateView (LayoutInflater inflater, ViewGroup container,
                               Bundle savedInstanceState) {
         View view = inflater.inflate (R.layout.fragment_search, null);
-        Button button = (Button) view.findViewById (R.id.ButtonCalendar);
-        button.setOnClickListener (this::onClick);
+        /*Button button = (Button) view.findViewById (R.id.ButtonCalendar);
+        button.setOnClickListener (this::onClick);*/
 
         // Inflate the layout for this fragment
         return view;
