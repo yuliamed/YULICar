@@ -1,11 +1,13 @@
 package com.example.yulicar;
 
-import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -63,22 +65,19 @@ public class CentralFragment extends Fragment {
     public View onCreateView (LayoutInflater inflater, ViewGroup container,
                               Bundle savedInstanceState) {
         View view = inflater.inflate (R.layout.fragment_search, null);
-        /*Button button = (Button) view.findViewById (R.id.ButtonCalendar);
-        button.setOnClickListener (this::onClick);*/
-
-        // Inflate the layout for this fragment
+        Button signOff = (Button) view.findViewById (R.id.search);
+        signOff.setOnClickListener (new View.OnClickListener () {
+            @Override
+            public void onClick (View v) {
+                TripsFragment tripsFragment = new TripsFragment ();
+                FragmentManager fragmentManager=getActivity().getSupportFragmentManager ();
+                FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
+                fragmentTransaction.replace (R.id.fragment_conteiner, tripsFragment);
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
+            }
+        });
         return view;
     }
 
-    public void onClick (View v) {
-
-        Snackbar.make (v, "HELLO FROM BUTTON", Snackbar.LENGTH_LONG).show ();
-        /*Dialog dialog = new Dialog (getActivity ().getBaseContext ());
-        dialog.setContentView (R.layout.alert_calendar);
-
-        dialog.setCancelable (false);*/
-        //CalendarView calendarView = (CalendarView) fi
-
-
-    }
 }
