@@ -107,7 +107,7 @@
             android:ems="10"
             android:fontFamily="@font/montserrat_medium"
             android:hint="Юленька Котик"
-            android:inputType="phone"
+            android:inputType="textPersonName"
             android:padding="10sp"
             android:textColor="@color/dark_text"
             android:textScaleX="0.95"

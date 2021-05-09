@@ -12,4 +12,5 @@
     <color name="buttons">#0B7A8B</color>
     <color name="light_text">#D3FFE8</color>
     <color name="dark_text">#064851</color>
+    <color name="wrong_input">#FF6247</color>
 </resources>
