@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.room.Room;
@@ -75,6 +76,8 @@ public class SingUp extends Activity {
         phNumber.getUnMasked (); name.getText ().toString ();
         Log.d("DB-TEST-SingUp", "Запись прошла");
         startActivity (new Intent (SingUp.this, Menu.class));
+        //MainActivity.setUserValues (name.getText ().toString (), phNumber.getMasked ());
+        MainActivity.setHasVisited(true);
         finishAffinity();
     }
 

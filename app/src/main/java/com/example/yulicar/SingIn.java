@@ -1,7 +1,9 @@
 package com.example.yulicar;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -24,6 +26,7 @@ public class SingIn extends Activity {
     MyDao dao;
     private MaskEditText phNumber;
     private TextView test;
+    public SharedPreferences mSettings;
     @Override
     protected void onCreate (@Nullable Bundle savedInstanceState) {
         super.onCreate (savedInstanceState);
@@ -36,6 +39,7 @@ public class SingIn extends Activity {
     protected void onStart () {
         db = Room.databaseBuilder (getApplicationContext (), MyDB.class, "db").allowMainThreadQueries ().build ();
         dao = db.getMyDao ();
+        mSettings = getSharedPreferences(MainActivity.APP_PREFERENCES_VISITED, Context.MODE_PRIVATE);
         //User user1 = new User(336276633, "Юля");
         //dao.addUser (user1);
         super.onStart ();
@@ -49,6 +53,12 @@ public class SingIn extends Activity {
             if (phNumber.getUnMasked ().equals (u.getPhNumber ().toString ()) ) {
                 Log.d("DB-TEST", phNumber.getUnMasked ().toString () + u.getPhNumber ().toString ());
                 startActivity (new Intent (SingIn.this, Menu.class));
+                MainActivity.setUserValues (u.getName ().toString (), phNumber.getMasked ());
+                MainActivity.setHasVisited(true);
+                //После этого hasVisited будет уже true и будет означать, что вход уже был
+                //setContentView (R.layout.activity_main);
+
+
                 finishAffinity();
                 return;
             }

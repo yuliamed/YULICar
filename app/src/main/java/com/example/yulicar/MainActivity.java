@@ -6,18 +6,31 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
 
+    private static SharedPreferences mSettings;
     private Button bSignIn;
     private Button bSignUp;
     private Button bMenuTest;
+
+    private final String APP_PREFERENCES = "my_APP_PREFERENCES";
+    public static final String APP_PREFERENCES_VISITED = "APP_PREFERENCES_VISITED";
+    public static final String APP_PREFERENCES_USERNAME = "APP_PREFERENCES_USERNAME";
+    public static final String APP_PREFERENCES_USERNUMBER = "APP_PREFERENCES_USERNUMBER";
+    public boolean hasVisited;
+
     @Override
     protected void onCreate (Bundle savedInstanceState) {
 
-        checkFirstStart ();
+        //checkFirstStart ();
+
+        mSettings = getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
+        hasVisited = mSettings.getBoolean(APP_PREFERENCES_VISITED, false);
+        checkSignIn ();
         super.onCreate (savedInstanceState);
         //setContentView (R.layout.activity_main);
 
@@ -39,7 +52,12 @@ public class MainActivity extends AppCompatActivity {
                 break;
         }
     }
-
+    private void checkSignIn() {
+        if (hasVisited) {
+            startActivity (new Intent (MainActivity.this, Menu.class));
+            MainActivity.this.finish ();
+        } else setContentView (R.layout.activity_main);
+    }
     private void checkFirstStart() {
 
         SharedPreferences sp = getSharedPreferences("hasVisited",
@@ -57,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
             setContentView (R.layout.activity_main);
             //Ниже запускаем активность которая нужна при первом входе
 
-        }else {
+        } else {
 
             startActivity (new Intent (MainActivity.this, Menu.class));
             MainActivity.this.finish ();
@@ -66,4 +84,23 @@ public class MainActivity extends AppCompatActivity {
             //Ниже запускаем активность которая нужна при последующих входах
         }
     }
+
+    public static void setHasVisited (boolean tOrF) {
+        SharedPreferences.Editor e = mSettings.edit();
+        e.putBoolean(MainActivity.APP_PREFERENCES_VISITED, tOrF);
+        e.commit();
+    }
+
+    public static void setUserValues (String name, String number) {
+        SharedPreferences.Editor e = mSettings.edit();
+        e.putString (MainActivity.APP_PREFERENCES_USERNAME, name);
+        Log.d("APP_PREFERENCES", APP_PREFERENCES_USERNAME);
+        e.apply ();
+        e.putString (MainActivity.APP_PREFERENCES_USERNUMBER, number);
+        Log.d("APP_PREFERENCES", APP_PREFERENCES_USERNUMBER);
+        e.apply ();
+        Log.d("APP_PREFERENCES", APP_PREFERENCES_USERNUMBER);
+        Log.d("APP_PREFERENCES", APP_PREFERENCES_USERNAME);
+    }
+
 }
