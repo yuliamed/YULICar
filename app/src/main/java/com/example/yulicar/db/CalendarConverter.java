@@ -1,4 +1,6 @@
-package com.example.yulicar.converters;
+package com.example.yulicar.db;
+
+import android.util.Log;
 
 import androidx.room.TypeConverter;
 
@@ -10,7 +12,9 @@ import java.util.Locale;
 public class CalendarConverter {
     @TypeConverter
     public String fromCalendar(Calendar c) {
-        return c.getTime().toString();
+        Log.d("DB-TEST", c.getTime().toString());
+        return
+                c.getTime().toString();
     }
 
     @TypeConverter
