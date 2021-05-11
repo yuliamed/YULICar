@@ -13,6 +13,15 @@ public class User {
     @NonNull
     private Integer phNumber;
     private String name;
+    private int miles = 0;
+
+    public int getMiles () {
+        return miles;
+    }
+
+    public void setMiles (int miles) {
+        this.miles = miles;
+    }
 
     public User (@NonNull Integer phNumber, String name) {
         this.phNumber = phNumber;

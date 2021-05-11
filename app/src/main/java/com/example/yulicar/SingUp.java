@@ -11,6 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 import androidx.room.Room;
 
+import com.example.yulicar.db.DBManeger;
 import com.example.yulicar.db.MyDB;
 import com.example.yulicar.db.MyDao;
 import com.example.yulicar.entities.User;
@@ -20,14 +21,16 @@ import com.santalu.maskara.widget.MaskEditText;
 import java.util.List;
 
 public class SingUp extends Activity {
-    MyDB db;
-    MyDao dao;
+    //MyDB db;
+    //MyDao dao;
+    DBManeger dbManeger;
     private MaskEditText phNumber;
     private EditText name;
     @Override
     protected void onCreate (@Nullable Bundle savedInstanceState) {
         super.onCreate (savedInstanceState);
         setContentView (R.layout.sign_up);
+        //dbManeger.openDB (getApplicationContext ());
         name = (EditText) findViewById (R.id.etName);
         phNumber = findViewById (R.id.etPhone);
     }
@@ -40,8 +43,8 @@ public class SingUp extends Activity {
 
     @Override
     protected void onStart () {
-        db = Room.databaseBuilder (getApplicationContext (), MyDB.class, "db").allowMainThreadQueries ().build ();
-        dao = db.getMyDao ();
+        //db = Room.databaseBuilder (getApplicationContext (), MyDB.class, "db").allowMainThreadQueries ().build ();
+        //dao = db.getMyDao ();
         super.onStart ();
     }
 
@@ -61,7 +64,7 @@ public class SingUp extends Activity {
             return;
         } else name.setBackgroundResource (R.drawable.fields);
 
-        List<User> users = dao.getUsers ();
+        List<User> users = dbManeger.dao.getUsers ();
         for (User u : users) {
             Log.d("DB-TEST-SingUp", phNumber.getUnMasked ().toString () + " " + u.getPhNumber ().toString ());
             if (phNumber.getUnMasked ().equals (u.getPhNumber ().toString ()) ) {
@@ -72,7 +75,7 @@ public class SingUp extends Activity {
 
         Log.d("DB-TEST-SingUp", "Запись пошла");
         User newUser = new User(Integer.parseInt (phNumber.getUnMasked ()), name.getText ().toString ());
-        dao.addUser (newUser);
+        dbManeger.dao.addUser (newUser);
         phNumber.getUnMasked (); name.getText ().toString ();
         Log.d("DB-TEST-SingUp", "Запись прошла");
         startActivity (new Intent (SingUp.this, Menu.class));

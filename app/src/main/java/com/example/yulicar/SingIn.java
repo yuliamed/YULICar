@@ -13,17 +13,22 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 import androidx.room.Room;
 
+import com.example.yulicar.db.DBManeger;
 import com.example.yulicar.db.MyDB;
 import com.example.yulicar.db.MyDao;
+import com.example.yulicar.entities.Trip;
 import com.example.yulicar.entities.User;
 import com.google.android.material.snackbar.Snackbar;
 import com.santalu.maskara.widget.MaskEditText;
 
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 public class SingIn extends Activity {
-    MyDB db;
-    MyDao dao;
+    //MyDB db;
+    //MyDao dao;
+    DBManeger dbManeger;
     private MaskEditText phNumber;
     private TextView test;
     public SharedPreferences mSettings;
@@ -37,8 +42,10 @@ public class SingIn extends Activity {
 
     @Override
     protected void onStart () {
-        db = Room.databaseBuilder (getApplicationContext (), MyDB.class, "db").allowMainThreadQueries ().build ();
-        dao = db.getMyDao ();
+        //db = Room.databaseBuilder (getApplicationContext (), MyDB.class, "db").allowMainThreadQueries ().build ();
+        //dao = db.getMyDao ();
+        //dbManeger.openDB (getApplicationContext ());
+        dbManeger = new DBManeger (getApplicationContext ());
         mSettings = getSharedPreferences(MainActivity.APP_PREFERENCES_VISITED, Context.MODE_PRIVATE);
         //User user1 = new User(336276633, "Юля");
         //dao.addUser (user1);
@@ -47,7 +54,7 @@ public class SingIn extends Activity {
 
     //обработчик кнопки на Activity
     public void signIn (View view) {
-        List<User> users = dao.getUsers ();
+        List<User> users = dbManeger.dao.getUsers ();
         for (User u : users) {
             Log.d("DB-TEST", phNumber.getUnMasked ().toString () + " " + u.getPhNumber ().toString ());
             if (phNumber.getUnMasked ().equals (u.getPhNumber ().toString ()) ) {

@@ -6,8 +6,9 @@ import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
 
-import com.example.yulicar.entities.User;
+import com.example.yulicar.entities.City;
 import com.example.yulicar.entities.Trip;
+import com.example.yulicar.entities.User;
 
 import java.util.List;
 
@@ -26,7 +27,17 @@ public interface MyDao {
     List<User> getUsers();
 
 
+    @Insert
+    void addCity (City city);
 
+    @Delete
+    void removeCity (City city);
+
+    @Update
+    void updateCity (City city);
+
+    @Query ("select * from City")
+    List<City> getCities();
 
 
     @Insert
@@ -37,6 +48,12 @@ public interface MyDao {
 
     @Query ("select * from Trip")
     List<Trip> getTrips();
+
+    @Query ("select * from Trip where numbOfSeats > :needNumbOfSeats")
+    List<Trip> getTripsByNumbOfSeats (int needNumbOfSeats);
+
+    @Query ("Update Trip SET numbOfSeats = numbOfSeats - :numbGotSeats WHERE :tripId=Trip.tripId")
+    void updateNumbOfSeats (int numbGotSeats, Long tripId );
 
 
 
@@ -62,5 +79,13 @@ public interface MyDao {
             "INNER JOIN TripUserJoin ON User.phNumber = TripUserJoin.phNumber\n" +
             "WHERE :tripId=TripUserJoin.tripId")
     List<User> selectUsersByTripId (Long tripId);
+
+    //TODO Написать нормальный запрос для выбки всех поездок по направлению
+    //по городу отправления, назначения and date
+    @Query ("SELECT Trip.* From Trip\n" +
+            "WHERE :cityFrom=Trip.cityFrom AND :cityTo=Trip.cityTo")
+    List<Trip> selectTripsByCitiesId (String cityFrom, String cityTo);
+
+
 
 }
