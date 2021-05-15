@@ -99,7 +99,7 @@ public class CentralFragment extends Fragment {
 
         /*Calendar calendar = new GregorianCalendar ();
         calendar.set(Calendar.MONTH, 4);
-        calendar.set(Calendar.DAY_OF_MONTH, 17);
+        calendar.set(Calendar.DAY_OF_MONTH, 20);
         calendar.set(Calendar.HOUR, 19);
         calendar.set(Calendar.MINUTE, 00);
         Trip trip1 = new Trip(null, calendar, (byte) 15, "9023-AB-2", "Mersedes","Mogilev", "Minsk", 15);

@@ -2,19 +2,19 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ll"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:id="@+id/ll">
+    android:orientation="vertical">
 
 
     <TextView
         android:id="@+id/directionOfTrip"
-        android:layout_marginBottom="15sp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Поездок нет"
+        android:layout_marginBottom="15sp"
         android:fontFamily="@font/montserrat_medium"
+        android:text="Поездок нет"
         android:textColor="@color/buttons"
         android:textSize="36sp" />
 
@@ -22,14 +22,27 @@
         android:id="@+id/dateOfTrip"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/montserrat_medium"
         android:text="Белая 33-33"
         android:textColor="@color/dark_text"
-        android:textSize="25sp"
-        android:fontFamily="@font/montserrat_medium"/>
-    <LinearLayout
-        android:id="@+id/container"
+        android:textSize="25sp" />
+
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginBottom="20sp"></LinearLayout>
+        android:layout_height="wrap_content">
+
+        <HorizontalScrollView
+            android:id="@+id/hscroll"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+            <LinearLayout
+                android:id="@+id/container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20sp"
+                android:orientation="vertical"></LinearLayout>
+        </HorizontalScrollView>
+    </ScrollView>
 </LinearLayout>
+
