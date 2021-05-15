@@ -40,6 +40,16 @@ public class Trip {
     @NonNull
     private String cityTo;
     private boolean status = true;
+    private Integer price;
+    public Integer getPrice () {
+        return price;
+    }
+
+    public void setPrice (Integer price) {
+        this.price = price;
+    }
+
+
 
     public boolean isStatus () {
         return status;
@@ -79,7 +89,7 @@ public class Trip {
         return carName;
     }
 
-    public Trip (Long tripId, Calendar date, Byte numbOfSeats, String carNumber, String carName, String cityFrom, String cityTo) {
+    public Trip (Long tripId, Calendar date, Byte numbOfSeats, String carNumber, String carName, String cityFrom, String cityTo, Integer price) {
         this.tripId = tripId;
         this.date = date;
         this.numbOfSeats = numbOfSeats;
@@ -87,6 +97,7 @@ public class Trip {
         this.carName = carName;
         this.cityFrom = cityFrom;
         this.cityTo = cityTo;
+        this.price = price;
     }
 
     /*@Entity(
