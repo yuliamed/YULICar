@@ -1,0 +1,183 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <TextView
+        android:id="@+id/directionOfTrip"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10sp"
+        android:text="Заказ рейса"
+        android:fontFamily="@font/montserrat_medium"
+        android:textColor="@color/buttons"
+        android:textSize="36sp" />
+
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/fields"
+        android:orientation="vertical"
+        tools:context=".TripsFragment"
+        android:layout_marginBottom="10sp">
+
+        <TableRow android:weightSum="7">
+
+            <TextView
+                android:id="@+id/book_time"
+                android:layout_marginLeft="5sp"
+                android:layout_weight="3"
+                android:fontFamily="@font/montserrat_medium"
+                android:text="12:25"
+                android:textColor="@color/big_text"
+                android:textSize="35sp" />
+
+            <TextView
+                android:id="@+id/book_direction"
+                android:layout_weight="4"
+                android:fontFamily="@font/montserrat_medium"
+                android:gravity="end"
+                android:layout_marginEnd="10sp"
+                android:text="Mogilev - Minsk"
+                android:textColor="@color/dark_text"
+                android:textSize="25sp"
+                />
+        </TableRow>
+
+        <TableRow android:weightSum="7"
+            android:layout_marginBottom="5sp">
+
+            <TextView
+                android:id="@+id/book_date"
+                android:layout_marginLeft="5sp"
+                android:layout_weight="0"
+                android:fontFamily="@font/montserrat_medium"
+                android:text="17.08.2020"
+                android:textColor="@color/dark_text"
+                android:textSize="25sp" />
+
+            <TextView
+                android:id="@+id/book_car"
+                android:layout_height="wrap_content"
+                android:layout_weight="6"
+                android:gravity="end"
+                android:fontFamily="@font/montserrat_light"
+                android:text="BMV X5"
+                android:textColor="@color/dark_text"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/book_carNumber"
+                android:layout_weight="1"
+                android:fontFamily="@font/montserrat_light"
+                android:text="Белая 33-33"
+                android:gravity="end"
+                android:layout_marginEnd="10sp"
+                android:textColor="@color/dark_text"
+                android:textSize="20sp" />
+        </TableRow>
+    </TableLayout>
+    <TextView
+        android:id="@+id/book_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Имя"
+        android:textScaleX="0.95"
+        android:layout_marginBottom="7sp"
+        android:textColor="@color/dark_text"
+        android:textSize="@dimen/main_text_size"
+        android:fontFamily="@font/montserrat_medium"/>
+    <EditText
+        android:id="@+id/et_book_name"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/but_height"
+        android:layout_gravity="center"
+        android:layout_marginBottom="10sp"
+        android:background="@drawable/fields"
+        android:cursorVisible="false"
+        android:ems="10"
+        android:fontFamily="@font/montserrat_medium"
+        android:hint="Юленька Котик"
+        android:inputType="textPersonName"
+        android:padding="10sp"
+        android:textColor="@color/dark_text"
+        android:textScaleX="0.95"
+        android:textSize="@dimen/but_text_size"
+        app:cornerRadius="@dimen/corner_radius"
+        app:strokeColor="@color/dark_text" />
+
+    <TextView
+        android:id="@+id/book_phNumber"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="7sp"
+        android:fontFamily="@font/montserrat_medium"
+        android:text="Номер"
+        android:textColor="@color/dark_text"
+        android:textScaleX="0.95"
+        android:textSize="@dimen/main_text_size" />
+
+    <com.santalu.maskara.widget.MaskEditText
+        android:id="@+id/book_etPhone"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/but_height"
+        android:layout_gravity="center"
+        android:layout_marginBottom="15sp"
+        android:background="@drawable/fields"
+        android:cursorVisible="false"
+        android:ems="10"
+        android:fontFamily="@font/montserrat_medium"
+        android:hint="+375 33 627 66 33"
+        android:inputType="phone"
+        android:padding="10sp"
+        android:textColor="@color/dark_text"
+        android:textScaleX="0.95"
+        android:textSize="@dimen/but_text_size"
+        app:mask="+375 (__) ___ __ __"
+        app:maskCharacter="_"
+        app:maskStyle="persistent"
+        app:cornerRadius="@dimen/corner_radius"
+        app:strokeColor="@color/dark_text"/>
+
+    <TextView
+        android:id="@+id/book_numbOfSeats"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="7sp"
+        android:fontFamily="@font/montserrat_medium"
+        android:textColor="@color/dark_text"
+        android:text="Количество мест"
+        android:textScaleX="0.95"
+        android:textSize="@dimen/main_text_size" />
+    <Spinner
+        android:id="@+id/spinner_numbOfSeats"
+        android:layout_height="55sp"
+        android:layout_width="match_parent"
+        android:layout_marginBottom="20sp"
+        android:background="@drawable/spinner_shape"
+        android:spinnerMode="dropdown" />
+
+    <Button
+        android:id="@+id/book"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/but_height"
+        android:layout_gravity="center"
+        android:layout_marginTop="20sp"
+        android:layout_marginBottom="27sp"
+        android:background="@drawable/shape_dark_button"
+        android:fontFamily="@font/montserrat_medium"
+        android:text="Заказать"
+        android:textAllCaps="false"
+        android:textColor="@color/light_text"
+        android:textScaleX="0.95"
+        android:textSize="@dimen/but_text_size"
+        app:backgroundTint="@color/buttons"
+        app:cornerRadius="@dimen/corner_radius"
+        app:strokeColor="@color/dark_text"
+        app:strokeWidth="@dimen/stroke_width" />
+</LinearLayout>

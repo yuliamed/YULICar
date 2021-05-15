@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/fields"
+    android:orientation="vertical"
+    tools:context=".TripsFragment"
+    android:layout_marginBottom="20sp">
+
+    <TableRow android:weightSum="3">
+
+        <TextView
+            android:id="@+id/time"
+            android:layout_marginLeft="10sp"
+            android:layout_weight="1"
+            android:fontFamily="@font/montserrat_medium"
+            android:text="12:25"
+            android:textColor="@color/big_text"
+            android:textSize="35sp" />
+
+        <TextView
+            android:id="@+id/car"
+            android:layout_gravity="right"
+            android:layout_weight="1"
+            android:fontFamily="@font/montserrat_light"
+            android:text="BMV X5"
+            android:textColor="@color/dark_text"
+            android:textSize="23sp" />
+
+        <TextView
+            android:id="@+id/carNumber"
+            android:layout_gravity="right|end"
+            android:layout_weight="1"
+            android:fontFamily="@font/montserrat_light"
+            android:text="Белая 33-33"
+            android:textColor="@color/dark_text"
+            android:textSize="23sp" />
+    </TableRow>
+
+    <TableRow android:weightSum="2">
+
+        <TextView
+            android:id="@+id/numbOfSeats"
+            android:layout_marginLeft="10sp"
+            android:layout_weight="1"
+            android:fontFamily="@font/montserrat_medium"
+            android:text="5 seats"
+            android:textColor="@color/dark_text"
+            android:textSize="25sp" />
+
+        <Button
+            android:id="@+id/price_book"
+            android:layout_weight="1"
+            android:background="@drawable/shape_dark_button"
+            android:fontFamily="@font/montserrat_medium"
+            android:text="13 BYR"
+            android:textColor="@color/light_text"
+            android:textSize="25sp"
+            app:backgroundTint="@color/big_text" />
+    </TableRow>
+</TableLayout>
