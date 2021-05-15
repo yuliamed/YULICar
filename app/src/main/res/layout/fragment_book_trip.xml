@@ -142,7 +142,8 @@
         app:replacementChar ="_"
         app:notMaskedSymbol = "_"
         app:cornerRadius="@dimen/corner_radius"
-        app:strokeColor="@color/dark_text"/>
+        app:strokeColor="@color/dark_text"
+        android:editable="false"/>
 
     <TextView
         android:id="@+id/book_numbOfSeats"

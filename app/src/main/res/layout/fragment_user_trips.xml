@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ll"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <TextView
+        android:id="@+id/directionOfTrip"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15sp"
+        android:fontFamily="@font/montserrat_medium"
+        android:text="Ваши поездки"
+        android:textColor="@color/buttons"
+        android:textSize="36sp" />
+
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:orientation="horizontal"
+       android:weightSum="2">
+       <Button
+           android:id="@+id/activ_trip"
+           android:layout_weight="1"
+           android:layout_height="@dimen/but_height"
+           android:layout_gravity="center"
+           android:layout_marginBottom="5sp"
+           android:background="@drawable/shape_button_user_trips"
+           android:fontFamily="@font/montserrat_medium"
+           android:text="Активные"
+           android:textScaleX="0.95"
+           android:textAllCaps="false"
+           android:textColor="@color/dark_text"
+           android:textSize="15sp"
+           app:backgroundTint="@color/background"
+           app:cornerRadius="@dimen/corner_radius"
+           app:strokeColor="@color/dark_text"
+           app:strokeWidth="@dimen/stroke_width"
+           android:onClick="signIn"
+           android:layout_width="0sp" />
+       <Button
+           android:id="@+id/history_trips"
+           android:layout_height="@dimen/but_height"
+           android:layout_gravity="center"
+           android:layout_weight="1"
+           android:layout_width="0sp"
+           android:layout_marginBottom="5sp"
+           android:background="@drawable/shape_button_user_trips"
+           android:fontFamily="@font/montserrat_medium"
+           android:text="Исторические"
+           android:textScaleX="0.95"
+           android:textAllCaps="false"
+           android:textColor="@color/dark_text"
+           android:textSize="15sp"
+           app:backgroundTint="@color/background"
+           app:cornerRadius="@dimen/corner_radius"
+           app:strokeColor="@color/dark_text"
+           app:strokeWidth="@dimen/stroke_width"
+           android:onClick="signIn"/>
+   </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/noo"
+        android:textSize="40sp"
+        android:textColor="@color/dark_text"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:fontFamily="@font/montserrat_medium"
+        />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <HorizontalScrollView
+            android:id="@+id/user_hscroll"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+            <LinearLayout
+                android:id="@+id/user_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20sp"
+                android:orientation="vertical"/>
+        </HorizontalScrollView>
+    </ScrollView>
+</LinearLayout>

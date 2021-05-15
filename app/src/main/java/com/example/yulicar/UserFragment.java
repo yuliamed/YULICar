@@ -1,25 +1,20 @@
 package com.example.yulicar;
 
-import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+
 import com.example.yulicar.db.DBManeger;
 import com.example.yulicar.entities.User;
 import com.google.android.material.snackbar.Snackbar;
-
-import java.util.Collections;
-import java.util.Set;
 
 
 public class UserFragment extends Fragment {
@@ -101,9 +96,15 @@ public class UserFragment extends Fragment {
         myTrips.setOnClickListener (new View.OnClickListener () {
             @Override
             public void onClick (View v) {
-                Snackbar.make (v,
+               /* Snackbar.make (v,
                         "Скоро всё появится))",
-                        Snackbar.LENGTH_LONG).show ();
+                        Snackbar.LENGTH_LONG).show ();*/
+                UserTripsFragment userTripsFragment = new UserTripsFragment ();
+                FragmentManager fragmentManager = getActivity ().getSupportFragmentManager ();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction ();
+                fragmentTransaction.replace (R.id.fragment_conteiner, userTripsFragment);
+                fragmentTransaction.addToBackStack (null);
+                fragmentTransaction.commit ();
             }
         });
 

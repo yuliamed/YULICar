@@ -14,7 +14,6 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.example.yulicar.R;
 import com.example.yulicar.db.DBManeger;
 import com.example.yulicar.entities.Trip;
 
@@ -72,6 +71,7 @@ public class OneTripFragment extends Fragment {
                 fragmentTransaction.replace (R.id.fragment_conteiner, bookTripFragment);
                 fragmentTransaction.addToBackStack(null);
                 fragmentTransaction.commit();
+
             }
         });
         return v;
