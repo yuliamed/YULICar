@@ -14,8 +14,17 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.yulicar.db.DBManeger;
+import com.example.yulicar.entities.User;
+import com.google.android.material.snackbar.Snackbar;
+
+import java.util.Collections;
+import java.util.Set;
+
 
 public class UserFragment extends Fragment {
+
+    DBManeger dbManeger;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -62,11 +71,41 @@ public class UserFragment extends Fragment {
                               Bundle savedInstanceState) {
         View v = inflater.inflate (R.layout.fragment_account, container, false);
         TextView name = (TextView) v.findViewById (R.id.name);
-       // name.setText (MainActivity.APP_PREFERENCES_USERNAME.toString ());
+        dbManeger = new DBManeger (getContext ());
+        //String nameSaved = MainActivity.mSettings.getString (MainActivity.APP_PREFERENCES_USERNAME, "Юленька");
+        //name.setText (nameSaved);
+
         TextView number = (TextView) v.findViewById (R.id.number);
-        //name.setText (MainActivity.APP_PREFERENCES_USERNUMBER);
+        //String userNumberSaved = MainActivity.mSettings.getString (MainActivity.APP_PREFERENCES_USERNUMBER, "+375 33 627 66 33");
+        //number.setText (userNumberSaved);
+        int savedPhNumber = MainActivity.mSettings.getInt(MainActivity.APP_PREFERENCES_USERID, 0);
+        User savedUser = dbManeger.dao.getUser (savedPhNumber);
+        name.setText (savedUser.getName ());
+        String strSavedNumber = String.valueOf (savedPhNumber);
+        strSavedNumber = "+375 (" + strSavedNumber.charAt (0) + strSavedNumber.charAt (1) +
+                ") "+ strSavedNumber.substring (2,5) + " " + strSavedNumber.substring (5,7) + " " +
+                strSavedNumber.substring (7,9);
+        number.setText (String.valueOf (strSavedNumber));
         Button myMiles = (Button) v.findViewById (R.id.miles);
+        myMiles.setOnClickListener (new View.OnClickListener () {
+            @Override
+            public void onClick (View v) {
+                Snackbar.make (v,
+                        "Скоро всё появится))",
+                        Snackbar.LENGTH_LONG).show ();
+            }
+        });
+
         Button myTrips = (Button) v.findViewById (R.id.my_trips);
+        myTrips.setOnClickListener (new View.OnClickListener () {
+            @Override
+            public void onClick (View v) {
+                Snackbar.make (v,
+                        "Скоро всё появится))",
+                        Snackbar.LENGTH_LONG).show ();
+            }
+        });
+
         Button signOff = (Button) v.findViewById (R.id.sing_off);
         signOff.setOnClickListener (new View.OnClickListener () {
             @Override
