@@ -89,17 +89,6 @@ public class TripsFragment extends Fragment {
                 fragmentTransaction.commit ();
             }
         }
-
-        /*Button book = (Button) v.findViewById (R.id.price_book);
-        book.setOnClickListener (new View.OnClickListener () {
-            @Override
-            public void onClick (View v) {
-
-            }
-        });*/
-
-
-
         return v;
     }
 }

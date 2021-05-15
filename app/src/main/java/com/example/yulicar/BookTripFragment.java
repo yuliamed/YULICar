@@ -72,11 +72,13 @@ public class BookTripFragment extends Fragment {
         + "." + trip.getDate ().get (Calendar.YEAR));
         carName.setText (trip.getCarName ());
         carNumber.setText (trip.getCarNumber ());
-        savedNumber = MainActivity.mSettings.getInt (MainActivity.APP_PREFERENCES_USERID, 0);
 
+
+        savedNumber = MainActivity.mSettings.getInt (MainActivity.APP_PREFERENCES_USERID, 0);
         phNumber.setText (String.valueOf (savedNumber));
-       // User savedUser = dbManeger.dao.getUser (savedNumber);
-        //etName.setText (savedUser.getName ());
+        User savedUser = dbManeger.dao.getUser (savedNumber);
+        etName.setText (savedUser.getName ());
+
 
         String[] seats = new String[trip.getNumbOfSeats ()];
         for (int i = 0; i < seats.length; i++) {
@@ -92,7 +94,6 @@ public class BookTripFragment extends Fragment {
             @Override
             public void onClick (View v) {
                 int numbOfSeats = Integer.parseInt (spinNumbOfSeats.getSelectedItem ().toString ());
-
                 Log.d ("Repair", String.valueOf (tripId));
                 User.TripUserJoin order = new User.TripUserJoin (savedNumber, tripId);
                 Log.d ("repair", String.valueOf (order.tripId) + " ----- " + String.valueOf (order.phNumber));
@@ -102,13 +103,12 @@ public class BookTripFragment extends Fragment {
                             Snackbar.LENGTH_LONG).show ();
                     return;
                 } else {
-                  //  MyDB db = Room.databaseBuilder (getContext (), MyDB.class, "db7").allowMainThreadQueries ().build ();
-                   // MyDao dao = db.getMyDao ();
-                    //dao.addTripUserJoin (order);
                     DBManeger.dao.addTripUserJoin (order);
                     Log.d ("Repair", "запись новой поездки прошла успешно");
                     DBManeger.dao.updateNumbOfSeats (numbOfSeats, tripId);
-                    //getActivity ().getFragmentManager ().popBackStack ();
+                    FragmentManager fragmentManager = getActivity ().getSupportFragmentManager ();
+                    fragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+
                 }
             }
         });
