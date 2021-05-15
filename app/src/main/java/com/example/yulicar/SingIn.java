@@ -7,29 +7,22 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
-import androidx.room.Room;
 
 import com.example.yulicar.db.DBManeger;
-import com.example.yulicar.db.MyDB;
-import com.example.yulicar.db.MyDao;
-import com.example.yulicar.entities.Trip;
 import com.example.yulicar.entities.User;
+import com.github.pinball83.maskededittext.MaskedEditText;
 import com.google.android.material.snackbar.Snackbar;
-import com.santalu.maskara.widget.MaskEditText;
 
-import java.util.Calendar;
-import java.util.GregorianCalendar;
 import java.util.List;
 
 public class SingIn extends Activity {
     //MyDB db;
     //MyDao dao;
     DBManeger dbManeger;
-    private MaskEditText phNumber;
+    private MaskedEditText phNumber;
     private TextView test;
     public SharedPreferences mSettings;
     @Override
@@ -51,9 +44,9 @@ public class SingIn extends Activity {
     public void signIn (View view) {
         List<User> users = dbManeger.dao.getUsers ();
         for (User u : users) {
-            Log.d("DB-TEST", phNumber.getUnMasked ().toString () + " " + u.getPhNumber ().toString ());
-            if (phNumber.getUnMasked ().equals (u.getPhNumber ().toString ()) ) {
-                Log.d("DB-TEST", phNumber.getUnMasked ().toString () + u.getPhNumber ().toString ());
+            Log.d("DB-TEST", phNumber.getUnmaskedText ().toString () + " " + u.getPhNumber ().toString ());
+            if (phNumber.getUnmaskedText ().equals (u.getPhNumber ().toString ()) ) {
+                Log.d("DB-TEST", phNumber.getUnmaskedText ().toString () + u.getPhNumber ().toString ());
                 startActivity (new Intent (SingIn.this, Menu.class));
                 MainActivity.setUserValues (u.getPhNumber ());
                 MainActivity.setHasVisited(true);

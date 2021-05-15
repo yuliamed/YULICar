@@ -54,7 +54,7 @@
             app:cornerRadius="@dimen/corner_radius"
             app:strokeColor="@color/dark_text" />-->
 
-        <com.santalu.maskara.widget.MaskEditText
+        <com.github.pinball83.maskededittext.MaskedEditText
             android:id="@+id/etPhone"
             android:layout_width="match_parent"
             android:layout_height="@dimen/but_height"

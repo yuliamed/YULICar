@@ -1,8 +1,6 @@
 package com.example.yulicar;
 
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.text.style.MaskFilterSpan;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,16 +15,13 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-import androidx.room.Room;
 
 import com.example.yulicar.db.DBManeger;
-import com.example.yulicar.db.MyDB;
-import com.example.yulicar.db.MyDao;
 import com.example.yulicar.entities.Trip;
 import com.example.yulicar.entities.User;
 import com.google.android.material.snackbar.Snackbar;
-import com.santalu.maskara.widget.MaskEditText;
+import com.github.pinball83.maskededittext.MaskedEditText;
+//import com.santalu.maskara.widget.MaskEditText;
 
 import java.util.Calendar;
 
@@ -40,7 +35,7 @@ public class BookTripFragment extends Fragment {
 
     private Button btBook;
     private EditText etName;
-    private MaskEditText phNumber;
+    private MaskedEditText phNumber;
     private Spinner spinNumbOfSeats;
     private int savedNumber;
 
@@ -57,7 +52,7 @@ public class BookTripFragment extends Fragment {
 
         btBook = (Button) v.findViewById (R.id.book);
         etName = (EditText) v.findViewById (R.id.et_book_name);
-        phNumber = (MaskEditText) v.findViewById (R.id.book_etPhone);
+        phNumber = (MaskedEditText) v.findViewById (R.id.book_etPhone);
         spinNumbOfSeats = (Spinner) v.findViewById (R.id.spinner_numbOfSeats);
         Bundle bundle = getArguments();
         if (bundle == null) {
@@ -75,7 +70,7 @@ public class BookTripFragment extends Fragment {
 
 
         savedNumber = MainActivity.mSettings.getInt (MainActivity.APP_PREFERENCES_USERID, 0);
-        phNumber.setText (String.valueOf (savedNumber));
+        phNumber.setMaskedText (String.valueOf (savedNumber));
         User savedUser = dbManeger.dao.getUser (savedNumber);
         etName.setText (savedUser.getName ());
 
