@@ -62,8 +62,8 @@
             android:textScaleX="0.95"
             android:textSize="@dimen/but_text_size"
             app:mask="+375 (__) ___ __ __"
-            app:maskCharacter="_"
-            app:maskStyle="persistent"
+            app:replacementChar ="_"
+            app:notMaskedSymbol = "_"
             app:cornerRadius="@dimen/corner_radius"
             app:strokeColor="@color/dark_text"/>
         <!--<EditText

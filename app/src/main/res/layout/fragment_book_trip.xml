@@ -122,7 +122,7 @@
         android:textScaleX="0.95"
         android:textSize="@dimen/main_text_size" />
 
-    <com.santalu.maskara.widget.MaskEditText
+    <com.github.pinball83.maskededittext.MaskedEditText
         android:id="@+id/book_etPhone"
         android:layout_width="match_parent"
         android:layout_height="@dimen/but_height"
@@ -139,8 +139,8 @@
         android:textScaleX="0.95"
         android:textSize="@dimen/but_text_size"
         app:mask="+375 (__) ___ __ __"
-        app:maskCharacter="_"
-        app:maskStyle="persistent"
+        app:replacementChar ="_"
+        app:notMaskedSymbol = "_"
         app:cornerRadius="@dimen/corner_radius"
         app:strokeColor="@color/dark_text"/>
 
