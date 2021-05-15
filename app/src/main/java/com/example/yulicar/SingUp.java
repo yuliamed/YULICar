@@ -81,6 +81,7 @@ public class SingUp extends Activity {
         startActivity (new Intent (SingUp.this, Menu.class));
         //MainActivity.setUserValues (name.getText ().toString (), phNumber.getMasked ());
         MainActivity.setHasVisited(true);
+        MainActivity.setUserValues (newUser.getPhNumber ());
         finishAffinity();
     }
 

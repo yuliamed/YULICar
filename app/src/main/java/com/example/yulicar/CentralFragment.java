@@ -93,8 +93,8 @@ public class CentralFragment extends Fragment {
         /*City city1 = new City("Mogilev");
         dbManeger.dao.addCity (city1);
         City city2 = new City("Minsk");
-        dbManeger.dao.addCity (city2);
-        City city3 = new City("Gomel");
+        dbManeger.dao.addCity (city2);*/
+        /*City city3 = new City("Gomel");
         dbManeger.dao.addCity (city3);*/
 
         /*Calendar calendar = new GregorianCalendar ();
@@ -102,11 +102,11 @@ public class CentralFragment extends Fragment {
         calendar.set(Calendar.DAY_OF_MONTH, 17);
         calendar.set(Calendar.HOUR, 19);
         calendar.set(Calendar.MINUTE, 00);
-        Trip trip1 = new Trip(null, calendar, (byte) 15, "9023-AB-2", "Mersedes","Gomel", "Minsk", 15);
+        Trip trip1 = new Trip(null, calendar, (byte) 15, "9023-AB-2", "Mersedes","Mogilev", "Minsk", 15);
         dbManeger.dao.addTrip (trip1);
         Trip trip2 = new Trip(null, calendar, (byte) 15, "9025-AL-6", "Mersedes","Mogilev", "Minsk", 13);
         dbManeger.dao.addTrip (trip2);
-        Trip trip3 = new Trip(null, calendar, (byte) 15, "1111-90-7", "Mersedes","Mogilev", "Minsk", 13);
+        Trip trip3 = new Trip(null, calendar, (byte) 15, "1111-90-7", "Mersedes","Minsk", "Mogilev", 13);
         dbManeger.dao.addTrip (trip3);*/
         trips = dbManeger.dao.getTrips();
         for (Trip t : trips) {
@@ -128,6 +128,11 @@ public class CentralFragment extends Fragment {
     @Override
     public View onCreateView (LayoutInflater inflater, ViewGroup container,
                               Bundle savedInstanceState) {
+        //todo - удали потом нафиг
+        int savedNumber = MainActivity.mSettings.getInt (MainActivity.APP_PREFERENCES_USERID, 0);
+        Log.d("ЗАДОЛБАЛО", String.valueOf (savedNumber));
+
+
         View view = inflater.inflate (R.layout.fragment_search, null);
         cityFrom = (Spinner) view.findViewById (R.id.spinnerCityFrom);
         cityTo = (Spinner) view.findViewById (R.id.spinnerCityTo);

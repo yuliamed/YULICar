@@ -80,7 +80,8 @@ public class UserFragment extends Fragment {
         //number.setText (userNumberSaved);
         int savedPhNumber = MainActivity.mSettings.getInt(MainActivity.APP_PREFERENCES_USERID, 0);
         User savedUser = dbManeger.dao.getUser (savedPhNumber);
-        name.setText (savedUser.getName ());
+        if (savedUser != null) {
+        name.setText (savedUser.getName ());}
         String strSavedNumber = String.valueOf (savedPhNumber);
         strSavedNumber = "+375 (" + strSavedNumber.charAt (0) + strSavedNumber.charAt (1) +
                 ") "+ strSavedNumber.substring (2,5) + " " + strSavedNumber.substring (5,7) + " " +

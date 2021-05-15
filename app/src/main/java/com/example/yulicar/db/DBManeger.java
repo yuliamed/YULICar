@@ -7,7 +7,7 @@ public class DBManeger {
     public static MyDao dao;
 
     public DBManeger (android.content.Context context) {
-        db = Room.databaseBuilder (context, MyDB.class, "db8").allowMainThreadQueries ().build ();
+        db = Room.databaseBuilder (context, MyDB.class, "db1.0").allowMainThreadQueries ().build ();
         dao = db.getMyDao ();
     }
 }
