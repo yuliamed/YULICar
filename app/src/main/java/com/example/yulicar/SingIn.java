@@ -42,13 +42,8 @@ public class SingIn extends Activity {
 
     @Override
     protected void onStart () {
-        //db = Room.databaseBuilder (getApplicationContext (), MyDB.class, "db").allowMainThreadQueries ().build ();
-        //dao = db.getMyDao ();
-        //dbManeger.openDB (getApplicationContext ());
         dbManeger = new DBManeger (getApplicationContext ());
         mSettings = getSharedPreferences(MainActivity.APP_PREFERENCES_VISITED, Context.MODE_PRIVATE);
-        //User user1 = new User(336276633, "Юля");
-        //dao.addUser (user1);
         super.onStart ();
     }
 
@@ -60,12 +55,10 @@ public class SingIn extends Activity {
             if (phNumber.getUnMasked ().equals (u.getPhNumber ().toString ()) ) {
                 Log.d("DB-TEST", phNumber.getUnMasked ().toString () + u.getPhNumber ().toString ());
                 startActivity (new Intent (SingIn.this, Menu.class));
-                MainActivity.setUserValues (u.getName ().toString (), phNumber.getMasked ());
+                MainActivity.setUserValues (u.getPhNumber ());
                 MainActivity.setHasVisited(true);
                 //После этого hasVisited будет уже true и будет означать, что вход уже был
                 //setContentView (R.layout.activity_main);
-
-
                 finishAffinity();
                 return;
             }
@@ -73,7 +66,6 @@ public class SingIn extends Activity {
         Snackbar.make (view,
                 "Такой пользователь не зарегистрирован",
                 Snackbar.LENGTH_LONG).show ();
-        //phNumber.getUnMasked (), name.getText ().toString ();
     }
 
     @Override

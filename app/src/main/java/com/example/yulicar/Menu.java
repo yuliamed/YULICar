@@ -23,27 +23,6 @@ public class Menu extends AppCompatActivity {
         setContentView (R.layout.central_activity);
 
         BottomNavigationView bottomNavigationView= findViewById (R.id.navigation_view);
-        /*bottomNavigationView.setSelectedItemId (R.id.searchFragment);
-
-        bottomNavigationView.setOnNavigationItemSelectedListener (new BottomNavigationView.OnNavigationItemSelectedListener () {
-            @Override
-            public boolean onNavigationItemSelected (@NonNull MenuItem item) {
-                switch (item.getItemId ()) {
-                    case R.id.helpFragment:
-                        startActivity (new Intent (getApplicationContext (), HelpFragment.class));
-                        overridePendingTransition (0, 0);
-                        return true;
-                    case R.id.searchFragment:
-                        return true;
-                    case R.id.userFragment:
-                        startActivity (new Intent (getApplicationContext (), UserFragment.class));
-                        overridePendingTransition (0, 0);
-                        return true;
-                }
-                return false;
-            }
-        });*/
-
         bottomNavigationView.setOnNavigationItemSelectedListener (navigationItemSelectedListener);
         getSupportFragmentManager ().beginTransaction ().replace (R.id.fragment_conteiner, new CentralFragment ()).commit ();
     }

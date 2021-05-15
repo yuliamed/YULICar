@@ -10,17 +10,23 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.yulicar.db.DBManeger;
+import com.example.yulicar.entities.User;
+
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity {
 
-    private static SharedPreferences mSettings;
+    public static SharedPreferences mSettings;
     private Button bSignIn;
     private Button bSignUp;
     private Button bMenuTest;
 
     private final String APP_PREFERENCES = "my_APP_PREFERENCES";
     public static final String APP_PREFERENCES_VISITED = "APP_PREFERENCES_VISITED";
-    public static final String APP_PREFERENCES_USERNAME = "APP_PREFERENCES_USERNAME";
-    public static final String APP_PREFERENCES_USERNUMBER = "APP_PREFERENCES_USERNUMBER";
+    //public static final String APP_PREFERENCES_USERNAME = "APP_PREFERENCES_USERNAME";
+    //public static final String APP_PREFERENCES_USERNUMBER = "APP_PREFERENCES_USERNUMBER";
+    public static final String APP_PREFERENCES_USERID = "APP_PREFERENCES_USERID";
     public boolean hasVisited;
 
     @Override
@@ -53,35 +59,14 @@ public class MainActivity extends AppCompatActivity {
         }
     }
     private void checkSignIn() {
-        if (hasVisited) {
-            startActivity (new Intent (MainActivity.this, Menu.class));
-            MainActivity.this.finish ();
-        } else setContentView (R.layout.activity_main);
-    }
-    private void checkFirstStart() {
-
-        SharedPreferences sp = getSharedPreferences("hasVisited",
-                Context.MODE_PRIVATE);
-        // проверяем, первый ли раз открывается программа (Если вход первый то вернет false)
-        boolean hasVisited = sp.getBoolean("hasVisited", false);
-
-        if (!hasVisited) {
-            // Сработает если Вход первый
-
-            //Ставим метку что вход уже был
-            SharedPreferences.Editor e = sp.edit();
-            e.putBoolean("hasVisited", true);
-            e.commit(); //После этого hasVisited будет уже true и будет означать, что вход уже был
+        DBManeger dbManeger = new DBManeger (getApplicationContext ());
+        List<User> users = dbManeger.dao.getUsers ();
+        if (users.isEmpty () || !hasVisited) {
             setContentView (R.layout.activity_main);
-            //Ниже запускаем активность которая нужна при первом входе
-
-        } else {
-
+        }
+        else {
             startActivity (new Intent (MainActivity.this, Menu.class));
             MainActivity.this.finish ();
-            //setContentView (R.layout.central_activity);
-            //Сработает если вход в приложение уже был
-            //Ниже запускаем активность которая нужна при последующих входах
         }
     }
 
@@ -91,16 +76,13 @@ public class MainActivity extends AppCompatActivity {
         e.commit();
     }
 
-    public static void setUserValues (String name, String number) {
+    public static void setUserValues (int userID) {
         SharedPreferences.Editor e = mSettings.edit();
-        e.putString (MainActivity.APP_PREFERENCES_USERNAME, name);
-        Log.d("APP_PREFERENCES", APP_PREFERENCES_USERNAME);
-        e.apply ();
-        e.putString (MainActivity.APP_PREFERENCES_USERNUMBER, number);
-        Log.d("APP_PREFERENCES", APP_PREFERENCES_USERNUMBER);
-        e.apply ();
-        Log.d("APP_PREFERENCES", APP_PREFERENCES_USERNUMBER);
-        Log.d("APP_PREFERENCES", APP_PREFERENCES_USERNAME);
+        e.putInt (MainActivity.APP_PREFERENCES_USERID, userID);
+        //e.putString (MainActivity.APP_PREFERENCES_USERNUMBER, number);
+        //Log.d("APP_PREFERENCES", APP_PREFERENCES_USERNAME);
+        //Log.d("APP_PREFERENCES", APP_PREFERENCES_USERNUMBER);
+        e.commit ();
     }
 
 }

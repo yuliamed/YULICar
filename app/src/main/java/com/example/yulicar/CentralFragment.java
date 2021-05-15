@@ -4,6 +4,7 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -18,6 +19,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CalendarView;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -27,6 +29,7 @@ import com.example.yulicar.db.MyDB;
 import com.example.yulicar.db.MyDao;
 import com.example.yulicar.entities.City;
 import com.example.yulicar.entities.Trip;
+import com.example.yulicar.entities.User;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.util.Calendar;
@@ -40,28 +43,26 @@ import java.util.List;
  */
 public class CentralFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-    //MyDB db;
-    //MyDao dao;
-    DBManeger dbManeger;
-    List<Trip> trips;
-
-    // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment CentralFragment.
-     */
-    // TODO: Rename and change types and number of parameters
+    private DBManeger dbManeger;
+    private List<Trip> trips;
+    private Spinner cityFrom;
+    private Spinner cityTo;
+    private CalendarView calendarView;
+    private int selectedYear;
+    private int selectedMonth;
+    private int selectedDay;
+    private Bundle bundle;
+    private TripsFragment tripsFragment;
+    private String selectedCityTo;
+    private String selectedCityFrom;
+
+
+
     public static CentralFragment newInstance (String param1, String param2) {
         CentralFragment fragment = new CentralFragment ();
         Bundle args = new Bundle ();
@@ -81,6 +82,8 @@ public class CentralFragment extends Fragment {
         super.onCreate (savedInstanceState);
 
         dbManeger = new DBManeger (getContext ());
+
+
         if (getArguments () != null) {
             mParam1 = getArguments ().getString (ARG_PARAM1);
             mParam2 = getArguments ().getString (ARG_PARAM2);
@@ -92,18 +95,28 @@ public class CentralFragment extends Fragment {
         City city2 = new City("Minsk");
         dbManeger.dao.addCity (city2);
         City city3 = new City("Gomel");
-        dbManeger.dao.addCity (city3);
-        Calendar calendar = new GregorianCalendar ();
-        calendar.set(Calendar.MONTH, 5);
+        dbManeger.dao.addCity (city3);*/
+
+        /*Calendar calendar = new GregorianCalendar ();
+        calendar.set(Calendar.MONTH, 4);
         calendar.set(Calendar.DAY_OF_MONTH, 17);
-        calendar.set(Calendar.HOUR_OF_DAY, 19);
+        calendar.set(Calendar.HOUR, 19);
         calendar.set(Calendar.MINUTE, 00);
-        Trip trip1 = new Trip(null, calendar, (byte) 15, "9023-AB-2", "Mersedes","Gomel", "Minsk");
-        dbManeger.dao.addTrip (trip1);*/
+        Trip trip1 = new Trip(null, calendar, (byte) 15, "9023-AB-2", "Mersedes","Gomel", "Minsk", 15);
+        dbManeger.dao.addTrip (trip1);
+        Trip trip2 = new Trip(null, calendar, (byte) 15, "9025-AL-6", "Mersedes","Mogilev", "Minsk", 13);
+        dbManeger.dao.addTrip (trip2);
+        Trip trip3 = new Trip(null, calendar, (byte) 15, "1111-90-7", "Mersedes","Mogilev", "Minsk", 13);
+        dbManeger.dao.addTrip (trip3);*/
         trips = dbManeger.dao.getTrips();
         for (Trip t : trips) {
-            Log.d("DB-TEST", t.getTripId () + " : " + t.getCityFrom () +  " : " +t.getCityTo ()+" : "
-                    + t.getDate ().get (Calendar.HOUR));
+            Log.d("DB-TEST-central", t.getTripId () + " : " + t.getCityFrom () +  " : " +t.getCityTo ()+" : "
+                    + t.getDate ().get (Calendar.DAY_OF_MONTH) + " : " + t.getDate ().get (Calendar.HOUR_OF_DAY)
+                    + " : " + t.getDate ().get (Calendar.HOUR) + " + " + t.getNumbOfSeats ());
+        }
+        List<User.TripUserJoin> orders = dbManeger.dao.getTripUserJoins ();
+        for (User.TripUserJoin t : orders){
+            Log.d("DB-TEST-central", "phNumber: " + t.phNumber + " TripId: " + t.tripId);
         }
     }
 
@@ -116,40 +129,69 @@ public class CentralFragment extends Fragment {
     public View onCreateView (LayoutInflater inflater, ViewGroup container,
                               Bundle savedInstanceState) {
         View view = inflater.inflate (R.layout.fragment_search, null);
-        Button signOff = (Button) view.findViewById (R.id.search);
-        signOff.setOnClickListener (new View.OnClickListener () {
+        cityFrom = (Spinner) view.findViewById (R.id.spinnerCityFrom);
+        cityTo = (Spinner) view.findViewById (R.id.spinnerCityTo);
+        fillInTowns(view);
+        calendarView = (CalendarView) view.findViewById (R.id.calendarView);
+        calendarView.setOnDateChangeListener (new CalendarView.OnDateChangeListener () {
             @Override
-            public void onClick (View v) {
-                TripsFragment tripsFragment = new TripsFragment ();
-                FragmentManager fragmentManager=getActivity().getSupportFragmentManager ();
-                FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
-                fragmentTransaction.replace (R.id.fragment_conteiner, tripsFragment);
-                fragmentTransaction.addToBackStack(null);
-                fragmentTransaction.commit();
+            public void onSelectedDayChange (@NonNull CalendarView view, int year, int month, int dayOfMonth) {
+                selectedDay= dayOfMonth;
+                selectedMonth = month;
+                selectedYear = year;
             }
         });
 
-        Spinner cityFrom = (Spinner) view.findViewById (R.id.spinnerCityFrom);
-        String[] citiesFrom = new String[trips.size ()];
-        Spinner cityTo = (Spinner) view.findViewById (R.id.spinnerCityTo);
-        String[] citiesTo = new String[trips.size ()];
-        for (int i = 0; i < trips.size (); i++) {
-            citiesFrom[i] = trips.get(i).getCityFrom ();
-            citiesTo[i] = trips.get(i).getCityTo();
-        }
-        ArrayAdapter<String> adapterFrom = new ArrayAdapter<String> (getActivity (), R.layout.row_for_spinner, R.id.row_of_spinner, citiesFrom);
-        ArrayAdapter<String> adapterTo = new ArrayAdapter<String> (getActivity (), R.layout.row_for_spinner, R.id.row_of_spinner, citiesTo);
-        cityFrom.setAdapter(adapterFrom);
-        cityTo.setAdapter(adapterTo);
-
-        cityFrom.setOnItemSelectedListener (new AdapterView.OnItemSelectedListener () {
-            public void onItemSelected(AdapterView<?> parent, View itemSelected, int selectedItemPosition, long selectedId) {
-                //String[] choose = getResources().getStringArray(R.array.animals);
-            }
-            public void onNothingSelected(AdapterView<?> parent) {
+        Button search = (Button) view.findViewById (R.id.search);
+        search.setOnClickListener (new View.OnClickListener () {
+            @Override
+            public void onClick (View v) {
+                tripsFragment = new TripsFragment ();
+                selectedCityTo = cityTo.getSelectedItem ().toString ();
+                selectedCityFrom = cityFrom.getSelectedItem ().toString ();
+                bundle = new Bundle ();
+                if (selectedCityFrom.equals (selectedCityTo)) {
+                    cityFrom.setBackgroundResource (R.drawable.fields_red);
+                    cityTo.setBackgroundResource (R.drawable.fields_red);
+                    Snackbar.make (view,
+                            "Вам не надо никуда ехать, вы уже на месте назначения :D",
+                            Snackbar.LENGTH_LONG).show ();
+                } else {
+                    cityFrom.setBackgroundResource (R.drawable.fields);
+                    cityTo.setBackgroundResource (R.drawable.fields);
+                    fillValuesForNextFragment();
+                }
             }
         });
         return view;
     }
 
+    private void fillInTowns (View view) {
+        List<City> cities = dbManeger.dao.getCities ();
+        String[] citiesFrom_To = new String[cities.size ()];
+        for (int i = 0; i < cities.size (); i++) {
+            citiesFrom_To[i] = cities.get(i).getCityName();
+            Log.d ("DB-Text_city", cities.get(i).getCityName());
+        }
+        ArrayAdapter<String> adapterFrom = new ArrayAdapter<String> (getActivity (), R.layout.row_for_spinner, R.id.row_of_spinner, citiesFrom_To);
+        ArrayAdapter<String> adapterTo = new ArrayAdapter<String> (getActivity (), R.layout.row_for_spinner, R.id.row_of_spinner, citiesFrom_To);
+        cityFrom.setAdapter(adapterFrom);
+        cityTo.setAdapter(adapterTo);
+    }
+
+    private void fillValuesForNextFragment() {
+        bundle.putString("cityFrom", selectedCityFrom/*info from spinner*/);
+        bundle.putString("cityTo", selectedCityTo/*info from spinner*/);
+        bundle.putInt ("day", selectedDay);
+        bundle.putInt ("month", selectedMonth);
+        bundle.putInt ("year", selectedYear);
+        Log.d ("DB-TEST-selected", selectedCityFrom + " " + selectedCityTo + " " + String.valueOf (selectedDay) + " "
+                + String.valueOf (selectedMonth) + " " + String.valueOf (selectedYear));
+        tripsFragment.setArguments (bundle);
+        FragmentManager fragmentManager = getActivity ().getSupportFragmentManager ();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction ();
+        fragmentTransaction.replace (R.id.fragment_conteiner, tripsFragment);
+        fragmentTransaction.addToBackStack (null);
+        fragmentTransaction.commit ();
+    }
 }
