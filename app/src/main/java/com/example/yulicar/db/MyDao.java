@@ -26,6 +26,9 @@ public interface MyDao {
     @Query ("select * from User")
     List<User> getUsers();
 
+    @Query ("select * from User WHERE phNumber = :phNumber")
+    User getUser(int phNumber);
+
 
     @Insert
     void addCity (City city);
@@ -51,6 +54,9 @@ public interface MyDao {
 
     @Query ("select * from Trip where numbOfSeats > :needNumbOfSeats")
     List<Trip> getTripsByNumbOfSeats (int needNumbOfSeats);
+
+    @Query ("select * from Trip where tripId= :tripId")
+    Trip getTripById (Long tripId);
 
     @Query ("Update Trip SET numbOfSeats = numbOfSeats - :numbGotSeats WHERE :tripId=Trip.tripId")
     void updateNumbOfSeats (int numbGotSeats, Long tripId );
@@ -84,7 +90,7 @@ public interface MyDao {
     //по городу отправления, назначения and date
     @Query ("SELECT Trip.* From Trip\n" +
             "WHERE :cityFrom=Trip.cityFrom AND :cityTo=Trip.cityTo")
-    List<Trip> selectTripsByCitiesId (String cityFrom, String cityTo);
+    List<Trip> selectTripsByCities (String cityFrom, String cityTo);
 
 
 
