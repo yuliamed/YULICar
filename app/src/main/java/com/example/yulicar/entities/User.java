@@ -55,9 +55,16 @@ public class User {
         @NonNull public final Integer phNumber;
         @NonNull public final Long tripId;
 
-        public TripUserJoin (@NonNull Integer phNumber, @NonNull Long tripId) {
+        public int getNumbOfSeats () {
+            return numbOfSeats;
+        }
+
+        private int numbOfSeats;
+
+        public TripUserJoin (@NonNull Integer phNumber, @NonNull Long tripId, int numbOfSeats) {
             this.phNumber = phNumber;
             this.tripId = tripId;
+            this.numbOfSeats = numbOfSeats;
         }
     }
 }

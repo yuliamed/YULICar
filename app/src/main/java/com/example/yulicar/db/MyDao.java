@@ -61,7 +61,8 @@ public interface MyDao {
     @Query ("Update Trip SET numbOfSeats = numbOfSeats - :numbGotSeats WHERE :tripId=Trip.tripId")
     void updateNumbOfSeats (int numbGotSeats, Long tripId );
 
-
+    @Query ("select numbOfSeats from TripUserJoin where :phNumber = phNumber AND :tripId = tripId")
+    int getNumbOfSeats (int phNumber, Long tripId );
 
 
 
@@ -70,6 +71,10 @@ public interface MyDao {
 
     @Delete
     void deleteTripUserJoin(User.TripUserJoin order);
+
+
+    @Query ("delete from TripUserJoin where :phNumber = phNumber AND :tripId = tripId")
+    void deleteOrderByTripIdUserNumb(int phNumber, Long tripId);
 
     @Query ("select * from TripUserJoin")
     List<User.TripUserJoin> getTripUserJoins();

@@ -1,39 +1,25 @@
 package com.example.yulicar;
 
-import android.app.Dialog;
-import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.fragment.app.DialogFragment;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-import androidx.room.Room;
-
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CalendarView;
-import android.widget.DatePicker;
-import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.example.yulicar.db.DBManeger;
-import com.example.yulicar.db.MyDB;
-import com.example.yulicar.db.MyDao;
 import com.example.yulicar.entities.City;
 import com.example.yulicar.entities.Trip;
-import com.example.yulicar.entities.User;
 import com.google.android.material.snackbar.Snackbar;
 
-import java.util.Calendar;
-import java.util.GregorianCalendar;
 import java.util.List;
 
 /**
@@ -93,11 +79,11 @@ public class CentralFragment extends Fragment {
         /*City city1 = new City("Mogilev");
         dbManeger.dao.addCity (city1);
         City city2 = new City("Minsk");
-        dbManeger.dao.addCity (city2);*/
-        /*City city3 = new City("Gomel");
-        dbManeger.dao.addCity (city3);*/
+        dbManeger.dao.addCity (city2);
+        City city3 = new City("Gomel");
+        dbManeger.dao.addCity (city3);
 
-        /*Calendar calendar = new GregorianCalendar ();
+        Calendar calendar = new GregorianCalendar ();
         calendar.set(Calendar.MONTH, 4);
         calendar.set(Calendar.DAY_OF_MONTH, 20);
         calendar.set(Calendar.HOUR, 19);
@@ -107,17 +93,17 @@ public class CentralFragment extends Fragment {
         Trip trip2 = new Trip(null, calendar, (byte) 15, "9025-AL-6", "Mersedes","Mogilev", "Minsk", 13);
         dbManeger.dao.addTrip (trip2);
         Trip trip3 = new Trip(null, calendar, (byte) 15, "1111-90-7", "Mersedes","Minsk", "Mogilev", 13);
-        dbManeger.dao.addTrip (trip3);*/
+        dbManeger.dao.addTrip (trip3);
         trips = dbManeger.dao.getTrips();
         for (Trip t : trips) {
             Log.d("DB-TEST-central", t.getTripId () + " : " + t.getCityFrom () +  " : " +t.getCityTo ()+" : "
                     + t.getDate ().get (Calendar.DAY_OF_MONTH) + " : " + t.getDate ().get (Calendar.HOUR_OF_DAY)
                     + " : " + t.getDate ().get (Calendar.HOUR) + " + " + t.getNumbOfSeats ());
         }
-        List<User.TripUserJoin> orders = dbManeger.dao.getTripUserJoins ();
+        /*List<User.TripUserJoin> orders = dbManeger.dao.getTripUserJoins ();
         for (User.TripUserJoin t : orders){
             Log.d("DB-TEST-central", "phNumber: " + t.phNumber + " TripId: " + t.tripId);
-        }
+        }*/
     }
 
     @Override

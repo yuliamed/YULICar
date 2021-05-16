@@ -14,9 +14,11 @@ import androidx.fragment.app.Fragment;
 
 import com.example.yulicar.db.DBManeger;
 import com.example.yulicar.entities.Trip;
+import com.example.yulicar.entities.User;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.util.Calendar;
+import java.util.List;
 
 import static com.example.yulicar.OneTripFragment.changeFormatOfNumbString;
 
@@ -26,6 +28,10 @@ public class OneTripUserFragment extends Fragment {
     private TextView price, direction, date, time, seats;
     private Button delete;
     private Trip order;
+    boolean clicked = false;
+    private int saved_seats = 0;
+    private  int phNumber;
+
     @Nullable
     @Override
     public View onCreateView (@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -35,41 +41,65 @@ public class OneTripUserFragment extends Fragment {
         direction = (TextView) v.findViewById (R.id.tr_user_direction);
         date = (TextView) v.findViewById (R.id.tr_user_date);
         time = (TextView) v.findViewById (R.id.tr_user_time);
-        seats = (TextView) v.findViewById (R.id.tr_user_price);
+        seats = (TextView) v.findViewById (R.id.tr_user_numbOfSeats);
 
         delete = (Button) v.findViewById (R.id.tr_user_delete);
-        int savedPhNumber = MainActivity.mSettings.getInt(MainActivity.APP_PREFERENCES_USERID, 0);
+        int savedPhNumber = MainActivity.mSettings.getInt (MainActivity.APP_PREFERENCES_USERID, 0);
 
         dbManeger = new DBManeger (getContext ());
         Long tripId;
 
-        Bundle bundle = getArguments();
+        Bundle bundle = getArguments ();
         if (bundle == null) {
             return v;
         } else {
-            Log.d ("--------trips","bungle not null");
+            Log.d ("--------trips", "bungle not null");
             tripId = bundle.getLong ("tripId");
             order = dbManeger.dao.getTripById (tripId);
-            Log.d ("--------trips",order.getCarName ());
+            Log.d ("--------trips", order.getCarName ());
+        }
+
+        phNumber = MainActivity.mSettings.getInt (MainActivity.APP_PREFERENCES_USERID, 0);
+        List<User.TripUserJoin> orders = dbManeger.dao.getTripUserJoins ();
+        for (User.TripUserJoin o : orders) {
+            if (o.tripId == tripId && o.phNumber == phNumber) {
+                saved_seats = o.getNumbOfSeats ();
+                Log.d ("НАЙДЕНООООО", String.valueOf (seats));
+                break;
+            }
         }
         price.setText (String.valueOf (order.getPrice ()) + "BYR");
         direction.setText (order.getCityFrom () + " - " + order.getCityTo ());
-        String hourS = changeFormatOfNumbString (order.getDate ().get(Calendar.HOUR_OF_DAY));
+        String hourS = changeFormatOfNumbString (order.getDate ().get (Calendar.HOUR_OF_DAY));
         String minuteS = changeFormatOfNumbString (order.getDate ().get (Calendar.MINUTE));
         String day = changeFormatOfNumbString (order.getDate ().get (Calendar.DAY_OF_MONTH));
-        String month = changeFormatOfNumbString(order.getDate ().get (Calendar.MONTH));
+        String month = changeFormatOfNumbString (order.getDate ().get (Calendar.MONTH));
         String year = String.valueOf (order.getDate ().get (Calendar.YEAR));
         date.setText (day + "." + month + "." + year);
-        time.setText (hourS+ ":" + minuteS);
-//        seats.setText (order.getNumbOfSeats ());
+        time.setText (hourS + ":" + minuteS);
+     seats.setText (saved_seats + " мест");
+
         delete.setOnClickListener (new View.OnClickListener () {
             @Override
             public void onClick (View v) {
                 Snackbar.make (v,
                         "Скоро всё появится))",
                         Snackbar.LENGTH_LONG).show ();
+                List<Trip> all_trips = dbManeger.dao.selectTripsByUser (phNumber);
+                for (Trip t : all_trips) Log.d ("Delete------All", String.valueOf (t.getTripId ()));
+                Log.d ("Delete------Selected", String.valueOf (tripId));
+
+
+                dbManeger.dao.deleteOrderByTripIdUserNumb ((phNumber), tripId);
+                dbManeger.dao.updateNumbOfSeats (-saved_seats, tripId);
+                all_trips = dbManeger.dao.selectTripsByUser (phNumber);
+                for (Trip t : all_trips)
+                    Log.d ("Delete------deleted", String.valueOf (t.getTripId ()));
+                clicked = true;
             }
         });
+        if (clicked)
+            getActivity ().getSupportFragmentManager ().beginTransaction ().hide (this).commit ();
         return v;
     }
 

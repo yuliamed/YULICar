@@ -90,8 +90,8 @@ public class BookTripFragment extends Fragment {
             public void onClick (View v) {
                 int numbOfSeats = Integer.parseInt (spinNumbOfSeats.getSelectedItem ().toString ());
                 Log.d ("Repair", String.valueOf (tripId));
-                User.TripUserJoin order = new User.TripUserJoin (savedNumber, tripId);
-                Log.d ("repair", String.valueOf (order.tripId) + " ----- " + String.valueOf (order.phNumber));
+                User.TripUserJoin order = new User.TripUserJoin (savedNumber, tripId, numbOfSeats);
+                Log.d ("repair", String.valueOf (order.tripId) + " ----- " + String.valueOf (order.phNumber) + " -------- " + String.valueOf (order.getNumbOfSeats ()));
                 if (order.equals (null)) {
                     Snackbar.make (v,
                             "Запись в базу данных невозможна",
