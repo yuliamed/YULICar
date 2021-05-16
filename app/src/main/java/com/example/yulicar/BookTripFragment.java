@@ -61,10 +61,13 @@ public class BookTripFragment extends Fragment {
             tripId = bundle.getLong ("tripId");
             trip = dbManeger.dao.getTripById (tripId);
         }
-        time.setText (trip.getDate ().get (Calendar.HOUR) + ":" + trip.getDate ().get (Calendar.HOUR));
+        String hour = OneTripFragment.changeFormatOfNumbString (trip.getDate ().get (Calendar.HOUR));
+        String minute = OneTripFragment.changeFormatOfNumbString (trip.getDate ().get (Calendar.MINUTE));
+        time.setText ( hour + ":" + minute);
         direction.setText (trip.getCityFrom ()+ " - "+ trip.getCityTo ());
-        date.setText (trip.getDate ().get (Calendar.DAY_OF_MONTH) + "." + trip.getDate ().get (Calendar.MONTH)
-        + "." + trip.getDate ().get (Calendar.YEAR));
+        String day = OneTripFragment.changeFormatOfNumbString (trip.getDate ().get (Calendar.DAY_OF_MONTH));
+        String month = OneTripFragment.changeFormatOfNumbString (trip.getDate ().get (Calendar.MONTH));
+        date.setText (day + "." + month + "." + trip.getDate ().get (Calendar.YEAR));
         carName.setText (trip.getCarName ());
         carNumber.setText (trip.getCarNumber ());
 

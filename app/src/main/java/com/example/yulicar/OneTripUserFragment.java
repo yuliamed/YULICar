@@ -99,7 +99,7 @@ public class OneTripUserFragment extends Fragment {
             }
         });
         if (clicked)
-            getActivity ().getSupportFragmentManager ().beginTransaction ().hide (this).commit ();
+            getActivity ().getSupportFragmentManager ().beginTransaction ().remove (this).commit ();
         return v;
     }
 
