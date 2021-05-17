@@ -1,4 +1,4 @@
-package com.example.yulicar;
+package com.example.yulicar.fragments;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -14,8 +14,9 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.example.yulicar.R;
 import com.example.yulicar.db.DBManeger;
-import com.example.yulicar.entities.Trip;
+import com.example.yulicar.db.entities.Trip;
 
 import java.util.Calendar;
 

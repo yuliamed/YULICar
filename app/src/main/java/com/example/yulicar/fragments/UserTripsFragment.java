@@ -1,7 +1,6 @@
-package com.example.yulicar;
+package com.example.yulicar.fragments;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,8 +10,10 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.example.yulicar.R;
+import com.example.yulicar.activities.MainActivity;
 import com.example.yulicar.db.DBManeger;
-import com.example.yulicar.entities.Trip;
+import com.example.yulicar.db.entities.Trip;
 
 import java.util.List;
 
@@ -35,11 +36,8 @@ public class UserTripsFragment extends Fragment {
         } else {
             for (int i = 0; i <orders.size (); i++) {
                 noo.setVisibility(View.INVISIBLE);
-                Log.d ("DB-TEST-selectedTrip", String.valueOf (orders.size ()));
-                Log.d ("DB-TEST-selectedTrip", String.valueOf (orders.get (i).getTripId ()));
                 FragmentTransaction fragmentTransaction = manager.beginTransaction ();
                 OneTripUserFragment order = new OneTripUserFragment ();
-
                 Bundle bundleInnerFragment = new Bundle ();
                 bundleInnerFragment.putLong ("tripId", orders.get (i).getTripId ());
                 order.setArguments (bundleInnerFragment);

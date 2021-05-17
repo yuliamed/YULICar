@@ -1,4 +1,4 @@
-package com.example.yulicar;
+package com.example.yulicar.fragments;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,8 +12,10 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.example.yulicar.activities.MainActivity;
+import com.example.yulicar.R;
 import com.example.yulicar.db.DBManeger;
-import com.example.yulicar.entities.User;
+import com.example.yulicar.db.entities.User;
 import com.google.android.material.snackbar.Snackbar;
 
 
@@ -96,9 +98,6 @@ public class UserFragment extends Fragment {
         myTrips.setOnClickListener (new View.OnClickListener () {
             @Override
             public void onClick (View v) {
-               /* Snackbar.make (v,
-                        "Скоро всё появится))",
-                        Snackbar.LENGTH_LONG).show ();*/
                 UserTripsFragment userTripsFragment = new UserTripsFragment ();
                 FragmentManager fragmentManager = getActivity ().getSupportFragmentManager ();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction ();

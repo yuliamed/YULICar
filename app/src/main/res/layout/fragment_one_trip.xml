@@ -6,7 +6,7 @@
     android:layout_height="wrap_content"
     android:background="@drawable/fields"
     android:orientation="vertical"
-    tools:context=".TripsFragment"
+    tools:context=".fragments.TripsFragment"
     android:layout_marginBottom="20sp">
 
     <TableRow android:weightSum="3">

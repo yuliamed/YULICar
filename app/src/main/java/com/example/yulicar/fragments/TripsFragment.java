@@ -1,4 +1,4 @@
-package com.example.yulicar;
+package com.example.yulicar.fragments;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -11,8 +11,9 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.example.yulicar.R;
 import com.example.yulicar.db.DBManeger;
-import com.example.yulicar.entities.Trip;
+import com.example.yulicar.db.entities.Trip;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -76,11 +77,9 @@ public class TripsFragment extends Fragment {
             for (Trip t : trips) {
                 FragmentTransaction fragmentTransaction = manager.beginTransaction ();
                 OneTripFragment oneTripFragment = new OneTripFragment ();
-
                 Bundle bundleInnerFragment = new Bundle ();
                 bundleInnerFragment.putLong ("tripId", t.getTripId ());
                 oneTripFragment.setArguments (bundleInnerFragment);
-
                 fragmentTransaction.add (R.id.container, oneTripFragment);
                 fragmentTransaction.commit ();
             }

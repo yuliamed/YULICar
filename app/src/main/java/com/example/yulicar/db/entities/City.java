@@ -1,4 +1,4 @@
-package com.example.yulicar.entities;
+package com.example.yulicar.db.entities;
 
 import androidx.annotation.NonNull;
 import androidx.room.Entity;

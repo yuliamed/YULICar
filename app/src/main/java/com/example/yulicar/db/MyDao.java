@@ -6,9 +6,9 @@ import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
 
-import com.example.yulicar.entities.City;
-import com.example.yulicar.entities.Trip;
-import com.example.yulicar.entities.User;
+import com.example.yulicar.db.entities.City;
+import com.example.yulicar.db.entities.Trip;
+import com.example.yulicar.db.entities.User;
 
 import java.util.List;
 

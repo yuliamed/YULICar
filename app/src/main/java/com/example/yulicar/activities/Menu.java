@@ -1,17 +1,17 @@
-package com.example.yulicar;
+package com.example.yulicar.activities;
 
-import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import com.example.yulicar.R;
+import com.example.yulicar.fragments.CentralFragment;
+import com.example.yulicar.fragments.HelpFragment;
+import com.example.yulicar.fragments.UserFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class Menu extends AppCompatActivity {

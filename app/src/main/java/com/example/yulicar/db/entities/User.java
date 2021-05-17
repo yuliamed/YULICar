@@ -1,4 +1,4 @@
-package com.example.yulicar.entities;
+package com.example.yulicar.db.entities;
 
 import androidx.annotation.NonNull;
 import androidx.room.Entity;
@@ -61,7 +61,8 @@ public class User {
 
         private int numbOfSeats;
 
-        public TripUserJoin (@NonNull Integer phNumber, @NonNull Long tripId, int numbOfSeats) {
+        public TripUserJoin (@NonNull Integer phNumber, @NonNull Long tripId,
+                             int numbOfSeats) {
             this.phNumber = phNumber;
             this.tripId = tripId;
             this.numbOfSeats = numbOfSeats;

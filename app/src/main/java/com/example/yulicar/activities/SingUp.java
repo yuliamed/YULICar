@@ -1,4 +1,4 @@
-package com.example.yulicar;
+package com.example.yulicar.activities;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -9,8 +9,9 @@ import android.widget.EditText;
 
 import androidx.annotation.Nullable;
 
+import com.example.yulicar.R;
 import com.example.yulicar.db.DBManeger;
-import com.example.yulicar.entities.User;
+import com.example.yulicar.db.entities.User;
 import com.github.pinball83.maskededittext.MaskedEditText;
 import com.google.android.material.snackbar.Snackbar;
 

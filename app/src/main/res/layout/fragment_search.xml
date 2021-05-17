@@ -7,7 +7,7 @@
     android:layout_marginLeft="16sp"
     android:layout_marginRight="16sp"
     android:orientation="vertical"
-    tools:context=".CentralFragment">
+    tools:context=".fragments.CentralFragment">
 
     <TextView
         android:layout_width="wrap_content"

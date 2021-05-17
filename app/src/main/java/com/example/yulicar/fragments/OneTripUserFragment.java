@@ -1,4 +1,4 @@
-package com.example.yulicar;
+package com.example.yulicar.fragments;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -12,25 +12,28 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.example.yulicar.activities.MainActivity;
+import com.example.yulicar.R;
 import com.example.yulicar.db.DBManeger;
-import com.example.yulicar.entities.Trip;
-import com.example.yulicar.entities.User;
+import com.example.yulicar.db.entities.Trip;
+import com.example.yulicar.db.entities.User;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.util.Calendar;
 import java.util.List;
 
-import static com.example.yulicar.OneTripFragment.changeFormatOfNumbString;
+import static com.example.yulicar.fragments.OneTripFragment.changeFormatOfNumbString;
 
 public class OneTripUserFragment extends Fragment {
 
+    private static boolean clicked = false;
     private DBManeger dbManeger;
     private TextView price, direction, date, time, seats;
     private Button delete;
     private Trip order;
-    boolean clicked = false;
+    //public boolean clicked = false;
     private int saved_seats = 0;
-    private  int phNumber;
+    private int phNumber;
 
     @Nullable
     @Override
@@ -77,7 +80,7 @@ public class OneTripUserFragment extends Fragment {
         String year = String.valueOf (order.getDate ().get (Calendar.YEAR));
         date.setText (day + "." + month + "." + year);
         time.setText (hourS + ":" + minuteS);
-     seats.setText (saved_seats + " мест");
+        seats.setText (saved_seats + " мест");
 
         delete.setOnClickListener (new View.OnClickListener () {
             @Override
@@ -95,11 +98,11 @@ public class OneTripUserFragment extends Fragment {
                 all_trips = dbManeger.dao.selectTripsByUser (phNumber);
                 for (Trip t : all_trips)
                     Log.d ("Delete------deleted", String.valueOf (t.getTripId ()));
-                clicked = true;
+                OneTripUserFragment.clicked = true;
+                getActivity ().getSupportFragmentManager ().beginTransaction ().remove (OneTripUserFragment.this).commit ();
             }
         });
-        if (clicked)
-            getActivity ().getSupportFragmentManager ().beginTransaction ().remove (this).commit ();
+        Log.d ("Delete------clicked", String.valueOf (clicked));
         return v;
     }
 

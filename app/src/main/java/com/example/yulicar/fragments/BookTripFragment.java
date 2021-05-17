@@ -1,4 +1,4 @@
-package com.example.yulicar;
+package com.example.yulicar.fragments;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -16,9 +16,11 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
+import com.example.yulicar.activities.MainActivity;
+import com.example.yulicar.R;
 import com.example.yulicar.db.DBManeger;
-import com.example.yulicar.entities.Trip;
-import com.example.yulicar.entities.User;
+import com.example.yulicar.db.entities.Trip;
+import com.example.yulicar.db.entities.User;
 import com.google.android.material.snackbar.Snackbar;
 import com.github.pinball83.maskededittext.MaskedEditText;
 //import com.santalu.maskara.widget.MaskEditText;
