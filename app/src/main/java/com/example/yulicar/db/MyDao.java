@@ -98,5 +98,12 @@ public interface MyDao {
     List<Trip> selectTripsByCities (String cityFrom, String cityTo);
 
 
+    @Query ("SELECT TripUserJoin.* From TripUserJoin\n" +
+    "INNER JOIN Trip ON TripId " +
+            "WHERE :cityFrom = Trip.cityFrom " +
+            "AND :cityTo = Trip.cityTo")
+    List<User.TripUserJoin> selectOrdersByCities(String cityFrom, String cityTo);
+
+
 
 }
