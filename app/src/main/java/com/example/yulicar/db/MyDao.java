@@ -7,6 +7,7 @@ import androidx.room.Query;
 import androidx.room.Update;
 
 import com.example.yulicar.db.entities.City;
+import com.example.yulicar.db.entities.Location;
 import com.example.yulicar.db.entities.Trip;
 import com.example.yulicar.db.entities.User;
 
@@ -30,6 +31,11 @@ public interface MyDao {
     User getUser(int phNumber);
 
 
+
+
+
+
+
     @Insert
     void addCity (City city);
 
@@ -41,6 +47,14 @@ public interface MyDao {
 
     @Query ("select * from City")
     List<City> getCities();
+
+
+
+
+
+
+
+
 
 
     @Insert
@@ -63,6 +77,27 @@ public interface MyDao {
 
     @Query ("select numbOfSeats from TripUserJoin where :phNumber = phNumber AND :tripId = tripId")
     int getNumbOfSeats (int phNumber, Long tripId );
+
+
+
+
+
+
+
+    @Insert
+    void addLocation(Location location);
+
+    @Delete
+    void deleteLocation(Location location);
+
+    @Query ("select * from location where :cityFrom=location.city")
+    List<Location> getLocationsForCity(String cityFrom);
+
+    @Query ("select * from Location where locationId= :locationId")
+    Location getLocationById (int locationId);
+
+
+
 
 
 
@@ -99,7 +134,7 @@ public interface MyDao {
 
 
     @Query ("SELECT TripUserJoin.* From TripUserJoin\n" +
-    "INNER JOIN Trip ON TripId " +
+    "INNER JOIN Trip ON TripUserJoin.tripId = Trip.tripId " +
             "WHERE :cityFrom = Trip.cityFrom " +
             "AND :cityTo = Trip.cityTo")
     List<User.TripUserJoin> selectOrdersByCities(String cityFrom, String cityTo);

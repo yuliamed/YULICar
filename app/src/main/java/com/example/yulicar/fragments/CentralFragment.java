@@ -15,8 +15,8 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.example.yulicar.activities.MainActivity;
 import com.example.yulicar.R;
+import com.example.yulicar.activities.MainActivity;
 import com.example.yulicar.db.DBManeger;
 import com.example.yulicar.db.entities.City;
 import com.example.yulicar.db.entities.Trip;
@@ -78,23 +78,37 @@ public class CentralFragment extends Fragment {
         }
         //db = Room.databaseBuilder (getActivity ().getApplicationContext (), MyDB.class, "db").allowMainThreadQueries ().build ();
         //dao = db.getMyDao ();
-        /*City city1 = new City("Mogilev");
+        /*City city1 = new City("Могилев");
         dbManeger.dao.addCity (city1);
-        City city2 = new City("Minsk");
+        City city2 = new City("Минск");
         dbManeger.dao.addCity (city2);
-        City city3 = new City("Gomel");
+        City city3 = new City("Гомель");
         dbManeger.dao.addCity (city3);
+
+        Location location = new Location (null, "Гостиница Могилев", "Могилев");
+        dbManeger.dao.addLocation (location);
+        Location location1 = new Location (null, "Автовокзал", "Могилев");
+        dbManeger.dao.addLocation (location1);
+        Location location2 = new Location (null, "ул. 30 лет Победы", "Могилев");
+        dbManeger.dao.addLocation (location2);
+
+        Location location_M = new Location (null, "ст.метро Якуба Коласа", "Минск");
+        dbManeger.dao.addLocation (location_M);
+        Location location1_M = new Location (null, "Вокзал", "Минск");
+        dbManeger.dao.addLocation (location1_M);
+        Location location2_M = new Location (null, "ул. Свердлова", "Минск");
+        dbManeger.dao.addLocation (location2_M);
 
         Calendar calendar = new GregorianCalendar ();
         calendar.set(Calendar.MONTH, 4);
-        calendar.set(Calendar.DAY_OF_MONTH, 20);
+        calendar.set(Calendar.DAY_OF_MONTH, 25);
         calendar.set(Calendar.HOUR, 19);
         calendar.set(Calendar.MINUTE, 00);
-        Trip trip1 = new Trip(null, calendar, (byte) 15, "9023-AB-2", "Mersedes","Mogilev", "Minsk", 15);
+        Trip trip1 = new Trip(null, calendar, (byte) 15, "9023-AB-2", "Mersedes","Могилев", "Минск", 15);
         dbManeger.dao.addTrip (trip1);
-        Trip trip2 = new Trip(null, calendar, (byte) 15, "9025-AL-6", "Mersedes","Mogilev", "Minsk", 13);
+        Trip trip2 = new Trip(null, calendar, (byte) 15, "3644-AK-6", "Volkswagen","Могилев", "Минск", 10);
         dbManeger.dao.addTrip (trip2);
-        Trip trip3 = new Trip(null, calendar, (byte) 15, "1111-90-7", "Mersedes","Minsk", "Mogilev", 13);
+        Trip trip3 = new Trip(null, calendar, (byte) 15, "1111-90-7", "Mersedes","Минск", "Могилев", 13);
         dbManeger.dao.addTrip (trip3);
         trips = dbManeger.dao.getTrips();
         for (Trip t : trips) {

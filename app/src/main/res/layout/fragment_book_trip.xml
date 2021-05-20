@@ -65,6 +65,8 @@
                 android:id="@+id/book_car"
                 android:layout_height="wrap_content"
                 android:layout_weight="6"
+                android:layout_marginLeft="5sp"
+                android:layout_marginRight="5sp"
                 android:gravity="end"
                 android:fontFamily="@font/montserrat_light"
                 android:text="BMV X5"
@@ -157,6 +159,24 @@
         android:textSize="@dimen/main_text_size" />
     <Spinner
         android:id="@+id/spinner_numbOfSeats"
+        android:layout_height="55sp"
+        android:layout_width="match_parent"
+        android:layout_marginBottom="20sp"
+        android:background="@drawable/spinner_shape"
+        android:spinnerMode="dropdown" />
+
+    <TextView
+        android:id="@+id/book_location"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="7sp"
+        android:fontFamily="@font/montserrat_medium"
+        android:textColor="@color/dark_text"
+        android:text="Место посадки"
+        android:textScaleX="0.95"
+        android:textSize="@dimen/main_text_size" />
+    <Spinner
+        android:id="@+id/spinner_location"
         android:layout_height="55sp"
         android:layout_width="match_parent"
         android:layout_marginBottom="20sp"

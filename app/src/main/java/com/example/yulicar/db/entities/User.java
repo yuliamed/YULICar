@@ -14,6 +14,15 @@ public class User {
     private Integer phNumber;
     private String name;
     private int miles = 0;
+    private Boolean isDriver = false;
+
+    public Boolean getDriver () {
+        return isDriver;
+    }
+
+    public void setDriver (Boolean driver) {
+        isDriver = driver;
+    }
 
     public int getMiles () {
         return miles;
@@ -23,9 +32,10 @@ public class User {
         this.miles = miles;
     }
 
-    public User (@NonNull Integer phNumber, String name) {
+    public User (@NonNull Integer phNumber, String name, boolean isDriver) {
         this.phNumber = phNumber;
         this.name = name;
+        this.isDriver = isDriver;
     }
 
     @NonNull
@@ -33,7 +43,7 @@ public class User {
         return phNumber;
     }
 
-    public String getName() {
+    public String getName () {
         return name;
     }
 
@@ -41,19 +51,29 @@ public class User {
             tableName = "TripUserJoin",
             primaryKeys = {"phNumber", "tripId"},
             foreignKeys = {
-                    @ForeignKey (
+                    @ForeignKey(
                             entity = User.class,
                             parentColumns = "phNumber",
                             childColumns = "phNumber",
                             onDelete = CASCADE),
-                    @ForeignKey (
+                    @ForeignKey(
                             entity = Trip.class,
                             childColumns = "tripId",
                             parentColumns = "tripId",
-                            onDelete = CASCADE)})
+                            onDelete = CASCADE),
+                    @ForeignKey(
+                            entity = Location.class,
+                            parentColumns = "locationId",
+                            childColumns = "locationId",
+                            onDelete = CASCADE)
+                    })
     public static class TripUserJoin {
-        @NonNull public final Integer phNumber;
-        @NonNull public final Long tripId;
+        @NonNull
+        public final Integer phNumber;
+        @NonNull
+        public final Long tripId;
+        @NonNull
+        public final Integer locationId;
 
         public int getNumbOfSeats () {
             return numbOfSeats;
@@ -62,9 +82,10 @@ public class User {
         private int numbOfSeats;
 
         public TripUserJoin (@NonNull Integer phNumber, @NonNull Long tripId,
-                             int numbOfSeats) {
+                             @NonNull Integer locationId, int numbOfSeats) {
             this.phNumber = phNumber;
             this.tripId = tripId;
+            this.locationId = locationId;
             this.numbOfSeats = numbOfSeats;
         }
     }
