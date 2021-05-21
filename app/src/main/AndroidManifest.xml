@@ -19,6 +19,8 @@
         <activity android:name=".activities.SingIn"/>
         <activity android:name=".activities.SingUp"/>
         <activity android:name=".activities.Menu"/>
+        <activity android:name=".activities.DriverActivity" />
+        <activity android:name=".activities.AddTrip" />
     </application>
 
 </manifest>

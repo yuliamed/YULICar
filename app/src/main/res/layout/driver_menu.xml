@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    tools:context=".activities.DriverActivity">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="16sp"
+        android:layout_marginRight="16sp"
+        android:background="@color/background"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/driver_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center"
+            android:layout_marginTop="64sp"
+            android:layout_marginBottom="85sp"
+            android:fontFamily="@font/montserrat_medium"
+            android:text="Водительское приложениe от YULICar"
+            android:gravity="center"
+            android:textColor="@color/big_text"
+            android:textSize="36sp" />
+
+        <Button
+            android:id="@+id/driver_add_trip"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/but_height"
+            android:layout_gravity="center"
+            android:layout_marginBottom="25sp"
+            android:background="@drawable/shape_invisible_button"
+            android:fontFamily="@font/montserrat_medium"
+            android:onClick="driver_click"
+            android:text="Добавить рейс"
+            android:textAlignment="viewStart"
+            android:textAllCaps="false"
+            android:textColor="@color/dark_text"
+            android:textScaleX="0.95"
+            android:textSize="@dimen/but_text_size"
+            app:backgroundTint="@color/background"
+            app:cornerRadius="@dimen/corner_radius"
+            app:strokeColor="@color/dark_text"
+            app:strokeWidth="@dimen/stroke_width"
+            tools:ignore="RtlCompat" />
+
+        <Button
+
+            android:id="@+id/driver_look_trips"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/but_height"
+            android:layout_gravity="center"
+            android:layout_marginBottom="70sp"
+            android:background="@drawable/shape_invisible_button"
+            android:fontFamily="@font/montserrat_medium"
+            android:onClick="driver_click"
+            android:text="Просмотр заказов"
+            android:textAlignment="viewStart"
+            android:textAllCaps="false"
+            android:textColor="@color/dark_text"
+            android:textScaleX="0.95"
+            android:textSize="@dimen/but_text_size"
+            app:backgroundTint="@color/background"
+            app:cornerRadius="@dimen/corner_radius"
+            app:strokeColor="@color/dark_text"
+            app:strokeWidth="@dimen/stroke_width"
+            tools:ignore="RtlCompat" />
+
+        <Button
+
+            android:id="@+id/driver_sing_off"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/but_height"
+            android:layout_gravity="center"
+            android:layout_marginBottom="27sp"
+            android:background="@drawable/shape_dark_button"
+            android:fontFamily="@font/montserrat_medium"
+            android:onClick="driver_click"
+            android:text="Выйти"
+            android:textAllCaps="false"
+            android:textColor="@color/light_text"
+            android:textScaleX="0.95"
+            android:textSize="@dimen/but_text_size"
+            app:backgroundTint="@color/buttons"
+            app:cornerRadius="@dimen/corner_radius"
+            app:strokeColor="@color/dark_text"
+            app:strokeWidth="@dimen/stroke_width" />
+
+
+    </LinearLayout>
+</RelativeLayout>
