@@ -1,10 +1,14 @@
 package com.example.yulicar.activities;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.EditText;
 
 import androidx.annotation.Nullable;
@@ -21,6 +25,7 @@ public class SingUp extends Activity {
     DBManeger dbManeger;
     private MaskedEditText phNumber;
     private EditText name;
+    boolean isDriver = false;
     @Override
     protected void onCreate (@Nullable Bundle savedInstanceState) {
         super.onCreate (savedInstanceState);
@@ -32,6 +37,43 @@ public class SingUp extends Activity {
     @Override
     protected void onStart () {
         super.onStart ();
+    }
+
+    public void check(View view){
+        CheckBox checkBox = (CheckBox) findViewById (R.id.check_is_driver);
+        if (checkBox.isChecked ()) {
+            LayoutInflater li = LayoutInflater.from(this);
+            View promptsView = li.inflate(R.layout.dialog_fragment, null);
+            AlertDialog.Builder mDialogBuilder = new AlertDialog.Builder(this);
+            mDialogBuilder.setView(promptsView);
+            final EditText userInput = (EditText) promptsView.findViewById(R.id.input_text);
+            //Настраиваем сообщение в диалоговом окне:
+            mDialogBuilder
+                    .setCancelable(false)
+                    .setPositiveButton("OK",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog,int id) {
+                                    //Вводим текст и отображаем в строке ввода на основном экране:
+                                    if (userInput.getText ().toString ().equals ("мамамылараму")) {
+                                        isDriver = true;
+                                        Log.d ("isDriver", "ДА ЭТО ЖЕ ВОДИТЕЛЬ");
+                                    }
+                                    else {
+                                        return;
+                                    }
+                                }
+                            })
+                    .setNegativeButton("Отмена",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog,int id) {
+                                    dialog.cancel();
+                                }
+                            });
+            //Создаем AlertDialog:
+            AlertDialog alertDialog = mDialogBuilder.create();
+            //и отображаем его:
+            alertDialog.show();
+        }
     }
 
     public void signUp (View view) {
@@ -60,14 +102,19 @@ public class SingUp extends Activity {
         }
 
         Log.d("DB-TEST-SingUp", "Запись пошла");
-        User newUser = new User(Integer.parseInt (phNumber.getUnmaskedText ()), name.getText ().toString (), false);
+        User newUser = new User(Integer.parseInt (phNumber.getUnmaskedText ()), name.getText ().toString (), isDriver);
         dbManeger.dao.addUser (newUser);
         phNumber.getUnmaskedText (); name.getText ().toString ();
         Log.d("DB-TEST-SingUp", "Запись прошла");
-        startActivity (new Intent (SingUp.this, Menu.class));
-        MainActivity.setHasVisited(true);
-        MainActivity.setUserValues (newUser.getPhNumber ());
-        finishAffinity();
+        if (!isDriver) {
+            startActivity (new Intent (SingUp.this, Menu.class));
+            MainActivity.setHasVisited(true);
+            MainActivity.setUserValues (newUser.getPhNumber ());
+            finishAffinity();
+        } else {
+
+        }
+
     }
 
     @Override

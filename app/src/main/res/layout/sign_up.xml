@@ -40,6 +40,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Введите мобильный номер"
+            android:textColor="@color/dark_text"
             android:textScaleX="0.95"
             android:layout_marginBottom="10sp"
             android:textSize="@dimen/main_text_size"
@@ -92,6 +93,7 @@
             android:text="Введите своё имя"
             android:textScaleX="0.95"
             android:layout_marginBottom="10sp"
+            android:textColor="@color/dark_text"
             android:textSize="@dimen/main_text_size"
             android:fontFamily="@font/montserrat_medium"/>
 
@@ -101,19 +103,33 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/but_height"
             android:layout_gravity="center"
-            android:layout_marginBottom="27sp"
+            android:layout_marginBottom="0sp"
             android:background="@drawable/fields"
             android:cursorVisible="false"
             android:ems="10"
-            android:fontFamily="@font/montserrat_medium"
+
             android:hint="Юленька Котик"
             android:inputType="textPersonName"
             android:padding="10sp"
             android:textColor="@color/dark_text"
             android:textScaleX="0.95"
             android:textSize="@dimen/but_text_size"
+            android:fontFamily="@font/montserrat_medium"
             app:cornerRadius="@dimen/corner_radius"
             app:strokeColor="@color/dark_text" />
+
+        <CheckBox
+            android:id="@+id/check_is_driver"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="создать водительский аккаунт"
+            android:textColor="@color/dark_text"
+            android:textScaleX="0.95"
+            android:textSize="17sp"
+            android:fontFamily="@font/montserrat_medium"
+            android:layout_marginTop="5sp"
+            android:layout_marginBottom="5sp"
+            android:onClick="check"/>
 
         <Button
             android:id="@+id/sing_up"
