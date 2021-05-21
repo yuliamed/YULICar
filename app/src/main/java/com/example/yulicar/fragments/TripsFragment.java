@@ -30,6 +30,16 @@ public class TripsFragment extends Fragment {
     }
 
     @Override
+    public void onStop () {
+        super.onStop ();
+    }
+
+    @Override
+    public void onPause () {
+        super.onPause ();
+    }
+
+    @Override
     public View onCreateView (LayoutInflater inflater, ViewGroup container,
                               Bundle savedInstanceState) {
         View v = inflater.inflate (R.layout.fragment_trips, container, false);
@@ -50,7 +60,7 @@ public class TripsFragment extends Fragment {
 
         directionInfo.setText (cityFrom + " - " + cityTo);
         dateInfo.setText (OneTripFragment.changeFormatOfNumbString (day) + "."
-                + OneTripFragment.changeFormatOfNumbString (month)+ "." + String.valueOf (year));
+                + OneTripFragment.changeFormatOfNumbString (month+1)+ "." + String.valueOf (year));
 
 
         List<Trip> tripsByCities =  dbManeger.dao.selectTripsByCities (cityFrom, cityTo);

@@ -24,17 +24,8 @@ import com.google.android.material.snackbar.Snackbar;
 
 import java.util.List;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link CentralFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
-public class CentralFragment extends Fragment {
 
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-    private String mParam1;
-    private String mParam2;
+public class CentralFragment extends Fragment {
 
     private DBManeger dbManeger;
     private List<Trip> trips;
@@ -51,15 +42,6 @@ public class CentralFragment extends Fragment {
 
 
 
-    public static CentralFragment newInstance (String param1, String param2) {
-        CentralFragment fragment = new CentralFragment ();
-        Bundle args = new Bundle ();
-        args.putString (ARG_PARAM1, param1);
-        args.putString (ARG_PARAM2, param2);
-        fragment.setArguments (args);
-        return fragment;
-    }
-
     @Override
     public void onStart () {
         super.onStart ();
@@ -71,11 +53,6 @@ public class CentralFragment extends Fragment {
 
         dbManeger = new DBManeger (getContext ());
 
-
-        if (getArguments () != null) {
-            mParam1 = getArguments ().getString (ARG_PARAM1);
-            mParam2 = getArguments ().getString (ARG_PARAM2);
-        }
         //db = Room.databaseBuilder (getActivity ().getApplicationContext (), MyDB.class, "db").allowMainThreadQueries ().build ();
         //dao = db.getMyDao ();
         /*City city1 = new City("Могилев");
@@ -153,6 +130,7 @@ public class CentralFragment extends Fragment {
         search.setOnClickListener (new View.OnClickListener () {
             @Override
             public void onClick (View v) {
+                Log.d ("CentralFragment", "Привет, я кнопка");
                 tripsFragment = new TripsFragment ();
                 selectedCityTo = cityTo.getSelectedItem ().toString ();
                 selectedCityFrom = cityFrom.getSelectedItem ().toString ();
@@ -199,6 +177,7 @@ public class CentralFragment extends Fragment {
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction ();
         fragmentTransaction.replace (R.id.fragment_conteiner, tripsFragment);
         fragmentTransaction.addToBackStack (null);
+        //fragmentTransaction.replace (R.id.fragment_conteiner, tripsFragment).show (tripsFragment);
         fragmentTransaction.commit ();
     }
 }
