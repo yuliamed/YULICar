@@ -69,12 +69,8 @@ public class UserFragment extends Fragment {
         View v = inflater.inflate (R.layout.fragment_account, container, false);
         TextView name = (TextView) v.findViewById (R.id.name);
         dbManeger = new DBManeger (getContext ());
-        //String nameSaved = MainActivity.mSettings.getString (MainActivity.APP_PREFERENCES_USERNAME, "Юленька");
-        //name.setText (nameSaved);
 
         TextView number = (TextView) v.findViewById (R.id.number);
-        //String userNumberSaved = MainActivity.mSettings.getString (MainActivity.APP_PREFERENCES_USERNUMBER, "+375 33 627 66 33");
-        //number.setText (userNumberSaved);
         int savedPhNumber = MainActivity.mSettings.getInt(MainActivity.APP_PREFERENCES_USERID, 0);
         User savedUser = dbManeger.dao.getUser (savedPhNumber);
         if (savedUser != null) {
