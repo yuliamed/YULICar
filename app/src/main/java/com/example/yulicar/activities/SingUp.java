@@ -54,7 +54,7 @@ public class SingUp extends Activity {
                             new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog,int id) {
                                     //Вводим текст и отображаем в строке ввода на основном экране:
-                                    if (userInput.getText ().toString ().equals ("мамамылараму")) {
+                                    if (userInput.getText ().toString ().equals ("heart")) {
                                         isDriver = true;
                                         Log.d ("isDriver", "ДА ЭТО ЖЕ ВОДИТЕЛЬ");
                                     }
@@ -112,7 +112,8 @@ public class SingUp extends Activity {
             MainActivity.setUserValues (newUser.getPhNumber ());
             finishAffinity();
         } else {
-
+            startActivity (new Intent (SingUp.this, DriverActivity.class));
+            finishAffinity();
         }
 
     }
