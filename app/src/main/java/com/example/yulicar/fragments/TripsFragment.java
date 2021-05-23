@@ -75,14 +75,15 @@ public class TripsFragment extends Fragment {
         for (Trip t : tripsByCities){
             if(month == (t.getDate ().get(Calendar.MONTH))
                     && day == (t.getDate ().get(Calendar.DAY_OF_MONTH))
-                    && year == (t.getDate ().get(Calendar.YEAR) )) {
+                    && year == (t.getDate ().get(Calendar.YEAR) ) && t.getNumbOfSeats () > 0) {
                 trips.add(t);
             }
         }
         manager = getFragmentManager ();
         if (trips.isEmpty ()) {
-            directionInfo.setText ("ПОЕЗДОК НЕТ");
-            dateInfo.setText ("");
+            directionInfo.setText (cityFrom + " - " + cityTo + " - ПОЕЗДОК НЕТ");
+            dateInfo.setText (OneTripFragment.changeFormatOfNumbString (day) + "."
+                    + OneTripFragment.changeFormatOfNumbString (month+1)+ "." + String.valueOf (year));
         } else {
             for (Trip t : trips) {
                 FragmentTransaction fragmentTransaction = manager.beginTransaction ();
