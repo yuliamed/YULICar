@@ -103,6 +103,7 @@
         android:background="@drawable/fields"
         android:cursorVisible="false"
         android:ems="10"
+        android:editable="false"
         android:fontFamily="@font/montserrat_medium"
         android:hint="Юленька Котик"
         android:inputType="textPersonName"
