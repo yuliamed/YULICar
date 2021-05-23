@@ -70,9 +70,6 @@ public class MainActivity extends AppCompatActivity {
     public static void setUserValues (int userID) {
         SharedPreferences.Editor e = mSettings.edit();
         e.putInt (MainActivity.APP_PREFERENCES_USERID, userID);
-        //e.putString (MainActivity.APP_PREFERENCES_USERNUMBER, number);
-        //Log.d("APP_PREFERENCES", APP_PREFERENCES_USERNAME);
-        //Log.d("APP_PREFERENCES", APP_PREFERENCES_USERNUMBER);
         e.commit ();
     }
 

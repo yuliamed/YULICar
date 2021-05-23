@@ -111,7 +111,6 @@ public class CentralFragment extends Fragment {
         int savedNumber = MainActivity.mSettings.getInt (MainActivity.APP_PREFERENCES_USERID, 0);
         Log.d("ЗАДОЛБАЛО", String.valueOf (savedNumber));
 
-
         View view = inflater.inflate (R.layout.fragment_search, null);
         cityFrom = (Spinner) view.findViewById (R.id.spinnerCityFrom);
         cityTo = (Spinner) view.findViewById (R.id.spinnerCityTo);
